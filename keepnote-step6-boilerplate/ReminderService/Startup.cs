@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using ReminderService.Models;
 using ReminderService.Repository;
 using ReminderService.Service;
 
+using Swashbuckle.AspNetCore.Swagger;
 namespace ReminderService
 {
     public class Startup
@@ -30,7 +32,37 @@ namespace ReminderService
             services.AddScoped<IReminderService, Service.ReminderService>();
             services.AddScoped<IReminderRepository, ReminderRepository>();
             ValidateToken(Configuration, services);
-        }
+
+            //configuring swagger
+            services.AddSwaggerGen(s =>
+                s.SwaggerDoc("reminderapidoc", new Info
+                {
+                    Title = "Reminder Service",
+                    Description = "Reminder API Endpoints",
+                    Version = "1.0.0"
+
+                })
+            );
+
+            services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("reminderauth", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+
+                });
+
+                options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "reminderauth", new string[] { } }
+                });
+
+            });
+        
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -40,6 +72,14 @@ namespace ReminderService
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
+            //adding swagger mw
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/reminderapidoc/swagger.json", "reminder-api");
+                //// s.RoutePrefix = string.Empty;
+
+            });
             app.UseMvc();
         }
 

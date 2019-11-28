@@ -9,6 +9,9 @@ using UserService.Models;
 using UserService.Repository;
 using UserService.Service;
 
+using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
+
 namespace UserService
 {
     public class Startup
@@ -30,7 +33,37 @@ namespace UserService
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, Service.UserService>();
             ValidateToken(Configuration, services);
-        }
+
+            //configuring swagger
+            services.AddSwaggerGen(s =>
+                s.SwaggerDoc("userapidoc", new Info
+                {
+                    Title = "User Service",
+                    Description = "User API Endpoints",
+                    Version = "1.0.0"
+
+                })
+            );
+
+            services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("userauth", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+
+                });
+
+                options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "userauth", new string[] { } }
+                });
+
+            });
+        
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -40,6 +73,15 @@ namespace UserService
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
+            //adding swagger mw
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/userapidoc/swagger.json", "user-api");
+                //// s.RoutePrefix = string.Empty;
+
+            });
+
             app.UseMvc();
         }
         //Validate Token

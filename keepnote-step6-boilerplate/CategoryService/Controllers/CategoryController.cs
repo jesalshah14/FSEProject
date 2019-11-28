@@ -72,6 +72,7 @@ namespace CategoryService.API.Controllers
          */
 
         //[Route("api/category/{id}")]
+
         [HttpDelete]
         [Route("{id}")]
         public ActionResult Delete(int id)

@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 
+using Swashbuckle.AspNetCore.Swagger;
+
+
 namespace AuthenticationService
 {
     public class Startup
@@ -49,6 +52,17 @@ namespace AuthenticationService
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
 
+            //configuring swagger
+            services.AddSwaggerGen(s =>
+
+                s.SwaggerDoc("authapidoc", new Info
+                {
+                    Title = "Authentication",
+                    Description = "Authentication API Endpoints",
+                    Version = "1.0.0"
+                })
+            );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +73,14 @@ namespace AuthenticationService
                 app.UseDeveloperExceptionPage();
             }
 
+            //adding swagger mw
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/authapidoc/swagger.json", "auth-api");
+               //// s.RoutePrefix = string.Empty;
+
+            });
             app.UseMvc();
         }
     }

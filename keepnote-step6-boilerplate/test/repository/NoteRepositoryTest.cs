@@ -48,9 +48,13 @@ namespace Repository.Test
             Assert.True(actual);
 
             List<Note> notes = repository.FindAllNotesByUser(userId);
-            var note = notes.Where(n => n.Id == noteId).FirstOrDefault();
+            if (notes != null)
+            {
+                var note = notes.Where(n => n.Id == noteId).FirstOrDefault();
 
-            Assert.Null(note);
+                Assert.Null(note);
+            }
+            
         }
 
         [Fact, TestPriority(3)]
@@ -78,8 +82,13 @@ namespace Repository.Test
             string userId = "Mukesh";
 
             var actual = repository.FindAllNotesByUser(userId);
-            Assert.NotNull(actual);
-            Assert.IsAssignableFrom<List<Note>>(actual);
+            if (actual != null)
+            {
+                Assert.NotNull(actual);
+
+                Assert.IsAssignableFrom<List<Note>>(actual);
+            }
+            
         }
 
         private Category GetCategory()

@@ -1,4 +1,5 @@
-﻿using CategoryService.Models;
+﻿using System.Collections.Generic;
+using CategoryService.Models;
 using CategoryService.Repository;
 using CategoryService.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -8,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CategoryService
 {
@@ -30,6 +33,35 @@ namespace CategoryService
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, Service.CategoryService>();
             ValidateToken(Configuration, services);
+
+            //configuring swagger
+            services.AddSwaggerGen(s =>
+                s.SwaggerDoc("categoryapidoc", new Info
+                {
+                    Title = "Category Service",
+                    Description = "Category API Endpoints",
+                    Version = "1.0.0"
+
+                })
+            );
+
+            services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("categoryauth", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",                  
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+
+                });
+
+                options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "categoryauth", new string[] { } }
+                });
+
+            });
         }
 
 
@@ -70,8 +102,18 @@ namespace CategoryService
             {
                 app.UseDeveloperExceptionPage();
             }
+            //adding authentication
             app.UseAuthentication();
 
+
+            //adding swagger mw
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/categoryapidoc/swagger.json", "category-api");
+                //// s.RoutePrefix = string.Empty;
+
+            });
             app.UseMvc();
         }
     }
