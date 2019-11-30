@@ -12,7 +12,7 @@ namespace NoteService.Controllers
       As in this assignment, we are working with creating RESTful web service to create microservices, hence annotate
       the class with [ApiController] annotation and define the controller level route as per REST Api standard.
   */
-  [Authorize]
+  //[Authorize]
     [Route("api/[controller]/")]
     [ApiController]
     public class NotesController : Controller

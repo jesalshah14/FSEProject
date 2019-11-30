@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace CategoryService.Models
@@ -12,7 +13,16 @@ namespace CategoryService.Models
         public CategoryContext(IConfiguration configuration)
         {
             //Initialize MongoClient and Database using connection string and database name from configuration
-            string server = configuration.GetSection("MongoDB:ConnectionString").Value;
+            //string server = configuration.GetSection("MongoDB:ConnectionString").Value;
+            //string db = configuration.GetSection("MongoDB:CategoryDatabase").Value;
+
+            //mongoClient = new MongoClient(server);
+            //database = mongoClient.GetDatabase(db);
+            string server = Environment.GetEnvironmentVariable("MONGO_DB");
+            if (server == null)
+            {
+                server = configuration.GetSection("MongoDB:ConnectionString").Value;
+            }
             string db = configuration.GetSection("MongoDB:CategoryDatabase").Value;
 
             mongoClient = new MongoClient(server);

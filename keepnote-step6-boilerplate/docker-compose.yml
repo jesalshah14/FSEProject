@@ -1,0 +1,79 @@
+version: '3'
+services:
+  userwebapi:
+    image: userservice
+    ports:
+      - "8084:80"
+    depends_on:
+      - db
+    environment:
+      MONGO_DB: "mongodb://db:27017"
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  notewebapi:
+    image: noteservice
+    ports:
+      - "8082:80"
+    depends_on:
+      - db
+    environment:
+      MONGO_DB: "mongodb://db:27017"
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  categorywebapi:
+    image: catservice
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    environment:
+      MONGO_DB: "mongodb://db:27017"
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  reminderwebapi:
+    image: remservice
+    ports:
+      - "8083:80"
+    depends_on:
+      - db
+    environment:
+      MONGO_DB: "mongodb://db:27017"
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  authwebapi:
+    image: authservice
+    ports:
+      - "8085:80"
+    depends_on:
+      - sqldb
+    environment:
+      SQLSERVER_AUTH: "Server=sqldb;Database=AuthDb;User Id=sa;password=pass@123;"
+  
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  
+  sqldb:
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "1433:1433"  
+    environment:
+      SA_PASSWORD: "pass@123"
+      ACCEPT_EULA: "Y"

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace ReminderService.Models
@@ -12,7 +13,11 @@ namespace ReminderService.Models
         public ReminderContext(IConfiguration configuration)
         {
             //Initialize MongoClient and Database using connection string and database name from configuration
-            string server = configuration.GetSection("MongoDB:ConnectionString").Value;
+            string server = Environment.GetEnvironmentVariable("MONGO_DB");
+            if (server == null)
+            {
+                server = configuration.GetSection("MongoDB:ConnectionString").Value;
+            }
             string db = configuration.GetSection("MongoDB:ReminderDatabase").Value;
 
             mongoClient = new MongoClient(server);

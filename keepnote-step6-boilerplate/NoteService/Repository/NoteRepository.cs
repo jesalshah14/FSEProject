@@ -87,7 +87,7 @@ namespace NoteService.Repository
                 var note = noteUser.Notes.FindAll(N => N.Id == noteId);
                 if (note.Count() == 0)
                 {
-                    return true;
+                    return false;
                 }
                 if (note.Count() > 1)
                 {
