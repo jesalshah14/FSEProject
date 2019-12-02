@@ -127,6 +127,7 @@ namespace ReminderService.Controllers
                 obj.CreationDate = reminder.CreationDate;
                 obj.Description = reminder.Description;
                 obj.CreatedBy = reminder.CreatedBy;
+                obj.Type = reminder.Type;
                 return StatusCode((int)HttpStatusCode.OK, service.UpdateReminder(reminderId, obj));
             }
             catch (ReminderNotFoundException ex)

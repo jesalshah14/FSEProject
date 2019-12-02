@@ -119,6 +119,7 @@ namespace CategoryService.API.Controllers
                 obj.CreationDate = category.CreationDate;
                 obj.Description = category.Description;
                 obj.CreatedBy = category.CreatedBy;
+                
                 return StatusCode((int)HttpStatusCode.OK, categoryservice.UpdateCategory(CategoryId, obj));
             }
             catch (CategoryNotFoundException ex)

@@ -48,7 +48,7 @@ namespace CategoryService.Service
         public List<Category> GetAllCategoriesByUserId(string userId)
         {
             var _category = repo.GetAllCategoriesByUserId(userId);
-            if (_category == null || _category.Count == 0)
+            if (_category == null)
             {
                 throw new CategoryNotFoundException($"This category id not found");
             }

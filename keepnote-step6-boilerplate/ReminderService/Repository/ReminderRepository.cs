@@ -65,12 +65,18 @@ namespace ReminderService.Repository
         // This method should be used to update an existing reminder.
         public bool UpdateReminder(int reminderId, Reminder reminder)
         {
+            bool status = false;
             var filter = Builders<Reminder>.Filter.Where(D => D.Id == reminderId);
             var update = Builders<Reminder>.Update.Set(R => R.Name, reminder.Name).Set(R => R.Description, reminder.Description)
                 .Set(R => R.Type, reminder.Type).Set(R => R.CreatedBy, reminder.CreatedBy);
 
             var updateResult = context.Reminders.UpdateOne(filter, update);
-            return updateResult.ModifiedCount > 0;
+            if (updateResult != null)
+            {
+                status = true;
+            }
+            return status;
+            ////return updateResult.ModifiedCount > 0;
         }
     }
 }
