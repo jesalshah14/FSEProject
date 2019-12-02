@@ -15,7 +15,7 @@ test:
 publish:
   stage: publish
   script:
-    - 'dotnet publish Keepnote-Step6-boilerplate/AuthenticationService/AuthenticationService.csproj'
+    - 'dotnet publish Keepnote-Step6-boilerplate/Keepnote-Step6-boilerplate.sln'
 
 
 
