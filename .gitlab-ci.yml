@@ -1,21 +1,28 @@
 image: microsoft/dotnet:sdk
 stages:
-    - build   
+    - compile
     - test
     - publish
-build:
-    stage: build
+
+compile api:
+    stage: compile
     script:
-    - 'dotnet restore'
-    - 'dotnet build'
+        - 'dotnet restore'
+        - 'dotnet build'
+
 test: 
-  stage: test
-  script:
-    - 'dotnet test test/Test.csproj'
-publish:
-  stage: publish
-  script:
-    - 'dotnet publish Keepnote-Step6-boilerplate/Keepnote-Step6-boilerplate.sln'
+    stage: test
+    script:
+        - 'dotnet test ../test/Test.csproj'
+
+publish auth api:
+    stage: publish
+    script:
+        - 'dotnet publish ../AuthenticationService/AuthenticationService.csproj -c Release'
+    artifacts:
+        paths:
+            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/AuthenticationService.dll
+        expire_in: 1 week
 
 
 
