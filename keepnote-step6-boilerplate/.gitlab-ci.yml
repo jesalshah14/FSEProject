@@ -16,10 +16,6 @@ publish:
   stage: publish
   script:
     - 'dotnet publish AuthenticationService/AuthenticationService.csproj'
-    - 'dotnet publish CategoryService/CategoryService.csproj'
-    - 'dotnet publish NoteService/NoteService.csproj'
-    - 'dotnet publish ReminderService/ReminderService.csproj'
-    - 'dotnet publish UserService/UserService.csproj'
 
 
 
