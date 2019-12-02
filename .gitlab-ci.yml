@@ -1,0 +1,22 @@
+image: microsoft/dotnet:sdk
+stages:
+    - build   
+    - test
+    - publish
+build:
+    stage: build
+    script:
+    - 'dotnet restore'
+    - 'dotnet build'
+test: 
+  stage: test
+  script:
+    - 'dotnet test test/Test.csproj'
+publish:
+  stage: publish
+  script:
+    - 'dotnet publish Keepnote-Step6-boilerplate/AuthenticationService/AuthenticationService.csproj'
+
+
+
+
