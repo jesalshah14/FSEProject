@@ -13,12 +13,12 @@ compile api:
 test: 
     stage: test
     script:
-        - 'dotnet test ../test/Test.csproj'
+        - 'dotnet test keepnote-step6-boilerplat/test/Test.csproj'
 
 publish auth api:
     stage: publish
     script:
-        - 'dotnet publish ../AuthenticationService/AuthenticationService.csproj -c Release'
+        - 'dotnet publish  keepnote-step6-boilerplate/AuthenticationService/AuthenticationService.csproj -c Release'
     artifacts:
         paths:
             - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/AuthenticationService.dll
