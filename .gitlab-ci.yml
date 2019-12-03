@@ -18,6 +18,45 @@ publish auth api:
             - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/AuthenticationService.dll
         expire_in: 1 week
 
+publish category api:
+    stage: publish
+    script:
+        - 'dotnet publish keepnote-step6-boilerplate/CategoryService/CategoryService.csproj -c Release'
+    artifacts:
+        paths:
+            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/CategoryService/bin/Release/netcoreapp2.2/CategoryService.dll
+        expire_in: 1 week
+
+
+ publish note api:
+    stage: publish
+    script:
+        - 'dotnet publish keepnote-step6-boilerplate/NoteService/NoteService.csproj -c Release'
+    artifacts:
+        paths:
+            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/NoteService/bin/Release/netcoreapp2.2/NoteService.dll
+        expire_in: 1 week
+
+ publish reminder api:
+    stage: publish
+    script:
+        - 'dotnet publish keepnote-step6-boilerplate/ReminderService/ReminderService.csproj -c Release'
+    artifacts:
+        paths:
+            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/ReminderService/bin/Release/netcoreapp2.2/ReminderService.dll
+        expire_in: 1 week
+
+
+ publish user api:
+    stage: publish
+    script:
+        - 'dotnet publish keepnote-step6-boilerplate/UserService/UserService.csproj -c Release'
+    artifacts:
+        paths:
+            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/UserService/bin/Release/netcoreapp2.2/UserService.dll
+        expire_in: 1 week
+
+
 
 
 
