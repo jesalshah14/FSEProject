@@ -1,7 +1,6 @@
 image: microsoft/dotnet:sdk
 stages:
     - compile
-    - test
     - publish
 
 compile api:
@@ -10,15 +9,10 @@ compile api:
         - 'dotnet restore keepnote-step6-boilerplate'
         - 'dotnet build keepnote-step6-boilerplate'
 
-test: 
-    stage: test
-    script:
-        - 'dotnet test keepnote-step6-boilerplat/test/Test.csproj'
-
 publish auth api:
     stage: publish
     script:
-        - 'dotnet publish  keepnote-step6-boilerplate/AuthenticationService/AuthenticationService.csproj -c Release'
+        - 'dotnet publish keepnote-step6-boilerplate/AuthenticationService/AuthenticationService.csproj -c Release'
     artifacts:
         paths:
             - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/AuthenticationService.dll
