@@ -27,8 +27,7 @@ publish category api:
             - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/CategoryService/bin/Release/netcoreapp2.2/CategoryService.dll
         expire_in: 1 week
 
-
- publish note api:
+publish note api:
     stage: publish
     script:
         - 'dotnet publish keepnote-step6-boilerplate/NoteService/NoteService.csproj -c Release'
@@ -37,7 +36,7 @@ publish category api:
             - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/NoteService/bin/Release/netcoreapp2.2/NoteService.dll
         expire_in: 1 week
 
- publish reminder api:
+publish reminder api:
     stage: publish
     script:
         - 'dotnet publish keepnote-step6-boilerplate/ReminderService/ReminderService.csproj -c Release'
@@ -47,7 +46,7 @@ publish category api:
         expire_in: 1 week
 
 
- publish user api:
+publish user api:
     stage: publish
     script:
         - 'dotnet publish keepnote-step6-boilerplate/UserService/UserService.csproj -c Release'
