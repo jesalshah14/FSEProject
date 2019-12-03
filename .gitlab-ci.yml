@@ -7,8 +7,8 @@ stages:
 compile api:
     stage: compile
     script:
-        - 'dotnet restore'
-        - 'dotnet build'
+        - 'dotnet restore keepnote-step6-boilerplate'
+        - 'dotnet build keepnote-step6-boilerplate'
 
 test: 
     stage: test
