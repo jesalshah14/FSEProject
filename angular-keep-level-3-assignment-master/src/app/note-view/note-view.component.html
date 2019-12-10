@@ -1,0 +1,17 @@
+
+
+<!-- Notes reader panel -->
+<div class="noteCardContainer">
+
+	<!-- Include the notes collection with each note rendered as a separate NoteComponent -->
+		<app-note [note]="note" *ngFor = "let note of notes"></app-note>
+		   <!-- <mat-card class="noteCard" *ngFor="let mynote of notes">
+			   <mat-card-title>
+				 
+				   {{mynote.title}}
+			   </mat-card-title>
+			   <mat-card-content>
+					   {{mynote.text}}
+			   </mat-card-content>
+		   </mat-card> -->
+		   </div>

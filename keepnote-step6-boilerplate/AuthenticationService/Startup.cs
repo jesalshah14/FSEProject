@@ -34,6 +34,12 @@ namespace AuthenticationService
             //Register DbContext with connection string read from configuration
             //Register all dependencies here
 
+            // services.AddCors();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
            // string constr = "Server=.\\sqlexpress;Database=AuthDb;User Id=sa;password=pass@123;";
@@ -43,11 +49,8 @@ namespace AuthenticationService
             {
                 constr = Configuration.GetConnectionString("AuthCon");
             }
-            services.AddDbContext<AuthDbContext>(option =>
-            {
-                option.UseSqlServer(constr);
-            });
-
+           
+            services.AddDbContext<AuthDbContext>(Options => Options.UseSqlServer(constr).UseLazyLoadingProxies());
             services.AddScoped<AuthDbContext>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
@@ -81,6 +84,7 @@ namespace AuthenticationService
                //// s.RoutePrefix = string.Empty;
 
             });
+            app.UseCors("Origin");
             app.UseMvc();
         }
     }

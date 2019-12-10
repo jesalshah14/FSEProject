@@ -26,6 +26,13 @@ namespace CategoryService
         public void ConfigureServices(IServiceCollection services)
         {
             //register all dependecies here
+
+
+            //  services.AddCors();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            });
             //Implement token validation logic
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<CategoryContext>();
@@ -113,6 +120,7 @@ namespace CategoryService
                 //// s.RoutePrefix = string.Empty;
 
             });
+            app.UseCors("Origin");
             app.UseMvc();
         }
     }

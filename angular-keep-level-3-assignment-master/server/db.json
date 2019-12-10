@@ -1,0 +1,16 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Read blog",
+      "text": "Shall do at 6 pm",
+      "state": "started"
+    },
+    {
+      "id": 2,
+      "title": "Call Ravi",
+      "text": "Track the new ",
+      "state": "completed"
+    }
+  ]
+}

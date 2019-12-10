@@ -1,0 +1,17 @@
+.keep-c-toggle-view {
+	width: 100%;
+	margin-left: 70%;
+	cursor: pointer;
+}
+
+.logout{
+	/* margin: 0,2px,0,2px !important; */
+	float: right;
+	padding-left: 42%
+	}
+	.profile
+	{
+		margin: 0,2px,0,2px !important;
+		float: left;
+		padding-left: 2%;
+	}

@@ -1,0 +1,44 @@
+<div class="login-container">
+
+    <mat-card class="center">
+
+        <h2 class="form-header">Login</h2>
+
+        <div class="login-wrapper">
+
+            <mat-form-field>
+
+                <input matInput class="username" name="username" placeholder="Enter UserName" 
+                    [formControl]="username" required>
+                <mat-error *ngIf="username.touched && username.dirty"><i>Please enter username</i></mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+
+                <input matInput class="password" name="password" placeholder="Enter Password" type="password"
+                    [formControl]="password" required>
+                <mat-error *ngIf="password.hasError('minlength') && password.touched"><i>password must be min 6
+                        characters</i></mat-error>
+
+            </mat-form-field>
+
+
+
+            <div class="center-button">
+                <!-- <button mat-button class="button-css">Login</button> -->
+
+                <button mat-raised-button color="primary" class="button-css" (click)='loginSubmit()'>Sign In</button>
+
+                <button mat-raised-button color="primary" class="button-css" (click)="routeToSignUp()">Sign Up</button>
+                <br />
+            </div>
+
+        </div>
+
+    </mat-card>
+
+</div>
+<!-- Error Message -->
+
+<label class="error-message">{{ submitMessage }}</label>

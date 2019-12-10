@@ -27,6 +27,12 @@ namespace UserService
         public void ConfigureServices(IServiceCollection services)
         {
             //register all dependencies here
+
+            //  services.AddCors();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            });
             //Implement token validation logic
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<UserContext>();
@@ -73,8 +79,10 @@ namespace UserService
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
-            //adding swagger mw
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(s =>
             {
                 s.SwaggerEndpoint("/swagger/userapidoc/swagger.json", "user-api");
@@ -82,6 +90,8 @@ namespace UserService
 
             });
 
+            // app.UseCors();
+            app.UseCors("Origin");
             app.UseMvc();
         }
         //Validate Token

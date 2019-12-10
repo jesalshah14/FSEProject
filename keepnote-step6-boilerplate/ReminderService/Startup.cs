@@ -26,6 +26,12 @@ namespace ReminderService
         public void ConfigureServices(IServiceCollection services)
         {
             //register all dependencies here
+
+            //  services.AddCors();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            });
             //Implement token validation logic
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ReminderContext>();
@@ -80,6 +86,7 @@ namespace ReminderService
                 //// s.RoutePrefix = string.Empty;
 
             });
+            app.UseCors("Origin");
             app.UseMvc();
         }
 

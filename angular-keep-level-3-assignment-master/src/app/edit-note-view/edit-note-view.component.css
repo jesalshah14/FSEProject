@@ -1,0 +1,15 @@
+
+.noteInputs{ 
+    display: flex;
+    flex-direction:column;
+}
+
+.noteSubmit{
+display :flex;
+justify-content: flex-end;
+}
+
+.error-message{
+    font-style: italic;
+    color:red;
+}

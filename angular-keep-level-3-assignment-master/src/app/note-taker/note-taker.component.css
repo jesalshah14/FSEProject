@@ -1,0 +1,20 @@
+.noteInputcontainer{
+    width :50vw;
+    margin:auto;
+    margin-top:40px;
+}
+
+.noteInputs{ 
+    display: flex;
+    flex-direction:column;
+}
+
+.noteSubmit{
+display :flex;
+justify-content: flex-end;
+}
+
+.error-message{
+    color: red;
+    font-style: italic;
+}
