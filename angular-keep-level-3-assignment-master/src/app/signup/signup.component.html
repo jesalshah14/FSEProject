@@ -1,0 +1,54 @@
+ 
+<div class="signup-form-container">
+  <h2> User Registration</h2>
+<!-- 
+<!form group directive!> -->
+<form [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
+  <div>
+      <label for="UserId">UserId</label>
+      <input type="text" placeholder="Enter UserId" formControlName="UserId">
+      <small  *ngIf="UserId.invalid && (UserId.dirty || UserId.touched)">
+          UserName cannot be left blank !
+      </small>
+  </div>
+  <div>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Password" formControlName="password" required minlength="6">
+      <small  *ngIf="password.invalid && (password.dirty || password.touched)">
+      <small  *ngIf="password.errors.required">
+          Password cannot be left blank !
+      </small>
+      <small  *ngIf="password.errors.minlength">
+              Password must have Minimum 6 Characters !
+          </small>
+      </small>
+  </div>
+  <div>
+    <label for="Contact">Contact Number</label>
+    <input type="text" placeholder="Enter Contact" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  [(ngModel)]="user.Contact" formControlName="Contact" required minlength="10" maxlength="10">
+    <small  *ngIf="Contact.invalid && (Contact.dirty || Contact.touched)">
+    <small  *ngIf="Contact.errors.required">
+        Contact No cannot be left blank !
+    </small>
+    <small  *ngIf="Contact.errors.minlength">
+      Contact No must have 10 digits !
+        </small>
+    </small>
+</div>
+
+  <div>
+      <!-- <button value="Sign In">Sign In</button> -->
+      <input class="submit" type="submit" [disabled]="!signUpForm.valid" value="Sign Up">
+  </div>
+</form>
+<h6 class="small">{{this.submitMessage}}</h6>
+
+      <div class="backlogin-css">
+        <a href="http://localhost:4200/login"><button mat-raised-button color="primary" class="btn btn-primary" type="button" >Go Back To Login</button></a>
+        
+      </div>
+</div>
+
+ 
+
+

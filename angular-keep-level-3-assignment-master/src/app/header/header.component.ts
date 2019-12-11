@@ -35,6 +35,8 @@ export class HeaderComponent {
     localStorage.removeItem('userId');
     localStorage.removeItem('UserName');
   this.userID='';
+
+  this.UserName ='';
  // window.location.reload(); 
     this.routerService.routeToLogin();
   }

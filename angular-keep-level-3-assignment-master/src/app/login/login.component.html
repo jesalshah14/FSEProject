@@ -9,8 +9,9 @@
             <mat-form-field>
 
                 <input matInput class="username" name="username" placeholder="Enter UserName" 
-                    [formControl]="username" required>
-                <mat-error *ngIf="username.touched && username.dirty"><i>Please enter username</i></mat-error>
+                [formControl]="username" required>
+                <mat-error *ngIf="username.invalid && (username.dirty || username.touched)"><i>username cannot be left
+                bllank</i></mat-error>
 
             </mat-form-field>
 
@@ -18,9 +19,10 @@
 
                 <input matInput class="password" name="password" placeholder="Enter Password" type="password"
                     [formControl]="password" required>
+                <mat-error *ngIf="password.hasError('required') && (password.dirty || password.touched)"><i>password
+                        cannot be blank</i></mat-error>
                 <mat-error *ngIf="password.hasError('minlength') && password.touched"><i>password must be min 6
                         characters</i></mat-error>
-
             </mat-form-field>
 
 
@@ -41,4 +43,4 @@
 </div>
 <!-- Error Message -->
 
-<label class="error-message">{{ submitMessage }}</label>
+<i><label class="error-message">{{ submitMessage }}</label></i>

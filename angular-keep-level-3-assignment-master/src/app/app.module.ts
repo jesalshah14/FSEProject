@@ -25,6 +25,8 @@ import { EditNoteOpenerComponent } from './edit-note-opener/edit-note-opener.com
 import { EditNoteViewComponent } from './edit-note-view/edit-note-view.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RouterService } from './services/router.service';
+import { SignupComponent } from './signup/signup.component';
+import { UserComponent } from './user/user.component';
 //import { CanActivateRouteGuard } from './can-activate-route.guard';
 
 const appRoute: Routes = [
@@ -37,6 +39,7 @@ const appRoute: Routes = [
     path:'login',//http://localhost:4200/login
     component:LoginComponent
   },
+  { path: 'signup', component: SignupComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -75,7 +78,9 @@ const appRoute: Routes = [
     NoteTakerComponent,
     NoteViewComponent,
     EditNoteOpenerComponent,
-    EditNoteViewComponent
+    EditNoteViewComponent,
+    SignupComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

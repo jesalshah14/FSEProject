@@ -15,6 +15,10 @@ export class RouterService {
     this.router.navigate(['login']);
   }
 
+  routeToSignUp() {
+    this.router.navigate(['signup']);
+  }
+
   routeToEditNoteView(noteId) {
     this.router.navigate([
       'dashboard', {

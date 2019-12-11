@@ -15,8 +15,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.userId = localStorage.getItem('userId');
-    console.log(this.userId);
+    // this.userId = localStorage.getItem('userId');
+    // console.log(this.userId);
   }
   routeToNoteView() {
     this.isNoteView = true;

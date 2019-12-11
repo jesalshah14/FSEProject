@@ -5,9 +5,7 @@
 }
 
 .logout{
-	/* margin: 0,2px,0,2px !important; */
-	float: right;
-	padding-left: 42%
+	cursor:pointer;
 	}
 	.profile
 	{

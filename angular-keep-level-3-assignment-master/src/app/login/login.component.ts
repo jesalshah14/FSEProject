@@ -68,6 +68,6 @@ export class LoginComponent {
     }
 
     routeToSignUp() {
-      this.routerService.routeToDashboard();
+      this.routerService.routeToSignUp();
     }
 }

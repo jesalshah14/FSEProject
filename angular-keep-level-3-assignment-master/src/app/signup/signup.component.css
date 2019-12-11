@@ -1,0 +1,67 @@
+.signup-form-container{
+    width:80vw;
+    margin:10vh auto;  
+}
+h2{
+    text-align: center;
+    padding: 2vh;
+    font-size: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+} 
+.signup-form{
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.backlogin-css{
+    text-align: end;
+}
+.signup-css{
+  
+    background-color:rgb(9, 112, 216);
+    width: 35%;
+    text-align: left;
+  }
+  .button-css{
+    background-color: rgb(9, 112, 216);
+    width: 10%;
+    text-align: left;
+   
+  }
+
+  form 
+{
+    border:1px solid navy;
+    margin : auto;
+    margin-top:30px;
+    width:40vw;
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+form div label{
+    margin:10px;
+}
+
+form div input{
+    width :70%
+}
+
+form div input.submit{
+    width: 20%;
+    margin-left: auto;
+}
+
+.small,small{
+    color :red;
+    font-style:italic;
+}
