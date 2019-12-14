@@ -55,7 +55,7 @@ export class EditUserViewComponent implements OnInit {
       (error) => {
        
         if (error.status === 404) {
-          this.submitMessage = 'User not found ! please give the login userId';
+          this.submitMessage = 'User not found ! please give the correct login userId';
         }
         else
         {

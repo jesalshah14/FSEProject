@@ -37,14 +37,16 @@
 </div>
 
   <div>
-      <!-- <button value="Sign In">Sign In</button> -->
+    <!-- <button mat-raised-button class="submit-css"
+    color="primary" type="submit" color="primary" [disabled]="!signUpForm.valid" value="Sign Up" >Sign Up</button> -->
       <input class="submit" type="submit" [disabled]="!signUpForm.valid" value="Sign Up">
   </div>
 </form>
 <h6 class="small">{{this.submitMessage}}</h6>
 
       <div class="backlogin-css">
-        <a href="http://localhost:4200/login"><button mat-raised-button color="primary" type="button" >Go Back To Login</button></a>
+        <a href="http://localhost:4200/login"><button mat-raised-button class="button-css"
+           color="primary" type="button" >Back To Login</button></a>
         
       </div>
 </div>

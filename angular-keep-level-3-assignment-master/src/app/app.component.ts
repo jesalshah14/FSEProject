@@ -27,4 +27,13 @@ export class AppComponent {
     this.isNoteView = false;
     this.routeService.routeToListView();
   }
+
+  routeToCategory() {
+    this.routeService.routeToCategory();
+  }
+
+  // routeToReminder() {
+  //   this.routeService.routeToReminder();
+  // }
+
 }

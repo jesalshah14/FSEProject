@@ -1,0 +1,23 @@
+.category-item{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}
+.button-css{
+    background-color: rgb(9, 112, 216);
+    width: 10%;
+   
+  }
+  .category-box
+  {
+    float:left;
+    margin-left:2%
+  }
+
+  .category-expansion-panel {
+    width: 30vw;
+    margin: auto;
+    }
+
+   .matinput{
+     width:25vw;
+   }

@@ -30,7 +30,14 @@ import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 import { EditUserViewComponent } from './edit-user-view/edit-user-view.component';
 import { UserService } from './services/user.service';
+import { HeaderSubComponent } from './header-sub/header-sub.component';
+import { CategoryComponent } from './category/category.component';
+import { EditCategoryViewComponent } from './edit-category-view/edit-category-view.component';
+import { EditCategoryOpenerComponent } from './edit-category-opener/edit-category-opener.component';
+import { CategoryService } from './services/category.service';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
 //import { CanActivateRouteGuard } from './can-activate-route.guard';
+import {MatDividerModule} from '@angular/material/divider';
 
 const appRoute: Routes = [
   {
@@ -45,6 +52,13 @@ const appRoute: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'user', component: UserComponent },
   { path: 'user/edit/:userId', component: EditUserViewComponent },
+  {
+    path: 'category', component: CategoryComponent,
+    children: [{
+      path: 'category/:categoryId/edit', component: EditCategoryOpenerComponent, outlet: 'categoryEditOutlet'
+    }
+   ]
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -86,7 +100,11 @@ const appRoute: Routes = [
     EditNoteViewComponent,
     SignupComponent,
     UserComponent,
-    EditUserViewComponent
+    EditUserViewComponent,
+    HeaderSubComponent,
+    CategoryComponent,
+    EditCategoryViewComponent,
+    EditCategoryOpenerComponent
   ],
   imports: [
     BrowserModule,
@@ -102,17 +120,21 @@ const appRoute: Routes = [
     MatSelectModule,
     MatButtonModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    
+    MatDividerModule
   ],
   providers: [
     AuthenticationService,
     RouterService,
    // CanActivateRouteGuard,
     NotesService,
-    UserService
+    UserService,
+    CategoryService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [EditNoteViewComponent]
+  entryComponents: [EditNoteViewComponent, EditCategoryViewComponent]
 })
 
 export class AppModule { }

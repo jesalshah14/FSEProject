@@ -35,6 +35,30 @@ export class RouterService {
   }
 
 
+
+  routeToCategory() {
+    this.router.navigate(['category']);
+  }
+
+  // routeToReminder() {
+  //   this.router.navigate(['reminder']);
+  // }
+
+  routeToEditCategoryView(categoryId) {
+    this.router.navigate(['category', {
+      outlets: {
+        categoryEditOutlet: ['category', categoryId, 'edit']
+      }
+    }]);
+  }
+
+  // routeToEditReminderView(reminderId) {
+  //   this.router.navigate(['reminder', {
+  //     outlets: {
+  //       reminderEditOutlet: ['reminder', reminderId, 'edit']
+  //     }
+  //   }]);
+  // }
   routeToEditNoteView(noteId) {
     this.router.navigate([
       'dashboard', {
@@ -45,9 +69,6 @@ export class RouterService {
     ]);
   }
 
-  routeBack() {
-    this.location.back();
-  }
 
   routeToNoteView() {
     this.router.navigate(['dashboard/view/noteview']);
@@ -56,4 +77,9 @@ export class RouterService {
   routeToListView() {
     this.router.navigate(['dashboard/view/listview']);
   }
+
+  routeBack() {
+    this.location.back();
+  }
+
 }

@@ -18,16 +18,14 @@ h2{
 
 .backlogin-css{
     text-align: end;
+    position: relative;
+    right: 17.4em;
+    bottom: 25em;
 }
-.signup-css{
-  
-    background-color:rgb(9, 112, 216);
-    width: 35%;
-    text-align: left;
-  }
+
   .button-css{
     background-color: rgb(9, 112, 216);
-    width: 10%;
+    width: 11% !important;;
     text-align: left;
    
   }

@@ -89,9 +89,6 @@ signUpUser()
           if (error.status === 409) {
             this.submitMessage = "userId conflicts with any existing user"
           }
-          if (error.status === 409) {
-            this.submitMessage = "userId conflicts with any existing user"
-          }
         else {
           this.submitMessage = 'Invalid user details';
           }
