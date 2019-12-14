@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule}from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
@@ -27,6 +28,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { RouterService } from './services/router.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
+import { EditUserViewComponent } from './edit-user-view/edit-user-view.component';
+import { UserService } from './services/user.service';
 //import { CanActivateRouteGuard } from './can-activate-route.guard';
 
 const appRoute: Routes = [
@@ -40,6 +43,8 @@ const appRoute: Routes = [
     component:LoginComponent
   },
   { path: 'signup', component: SignupComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'user/edit/:userId', component: EditUserViewComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -80,7 +85,8 @@ const appRoute: Routes = [
     EditNoteOpenerComponent,
     EditNoteViewComponent,
     SignupComponent,
-    UserComponent
+    UserComponent,
+    EditUserViewComponent
   ],
   imports: [
     BrowserModule,
@@ -95,13 +101,15 @@ const appRoute: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     AuthenticationService,
     RouterService,
    // CanActivateRouteGuard,
-    NotesService
+    NotesService,
+    UserService
   ],
   bootstrap: [AppComponent],
   entryComponents: [EditNoteViewComponent]

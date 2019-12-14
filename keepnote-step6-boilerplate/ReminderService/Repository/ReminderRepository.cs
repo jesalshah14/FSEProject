@@ -24,6 +24,7 @@ namespace ReminderService.Repository
                     var rem = context.Reminders.Find(_ => true).ToList();
                     reminder.Id = (rem.Last().Id) + 1;
                 }
+                reminder.CreationDate = DateTime.Now;
                 context.Reminders.InsertOne(reminder);
                 return context.Reminders.Find( R => R.Name == reminder.Name).FirstOrDefault();
             }

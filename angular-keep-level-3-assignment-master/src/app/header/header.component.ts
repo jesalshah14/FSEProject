@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterService } from '../services/router.service';
 
 @Component({
@@ -6,11 +6,17 @@ import { RouterService } from '../services/router.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isNoteView = true;
   userID: string;
   UserName:string;
   constructor(private routerService: RouterService) { }
+
+  ngOnInit() {
+    this.userID = localStorage.getItem('userId');
+    this.UserName=localStorage.getItem('UserName');
+    // console.log('test'+this.UserName);
+  }
 
   switchToListView() {
     this.isNoteView = false;
@@ -26,9 +32,9 @@ export class HeaderComponent {
     this.UserName=localStorage.getItem('UserName');
   }
 
-  // routeToUserDetails(){
-  //   this.routerService.routeToUserDetails();
-  // }
+  routeToUserDetails(){
+    this.routerService.routeToUserDetails();
+  }
 
   logoutUser() {
     localStorage.removeItem('bearerToken');

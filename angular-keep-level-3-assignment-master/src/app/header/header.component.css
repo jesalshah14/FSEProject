@@ -1,10 +1,10 @@
-.keep-c-toggle-view {
+.keeptoggle-view{
 	width: 100%;
 	margin-left: 70%;
 	cursor: pointer;
 }
 
-.logout{
+.logout, .profile{
 	cursor:pointer;
 	}
 	.profile

@@ -12,6 +12,7 @@ namespace UserService.Models
 	 * should be always initialized with the system date.
 	 */
         [BsonId]
+        
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Contact { get; set; }

@@ -9,6 +9,8 @@ import { NotesService } from '../services/notes.service';
   styleUrls: ['./edit-note-view.component.css']
 })
 export class EditNoteViewComponent implements OnInit {
+  // userID: string;
+  // UserName:string;
   note: Note;
   states: Array<string> = ['not-started', 'started', 'completed'];
   errMessage: string;
@@ -20,6 +22,11 @@ export class EditNoteViewComponent implements OnInit {
 
   ngOnInit() {
     this.note = this.noteService.getNoteById(this.data.noteId);
+   
+      // this.userID = localStorage.getItem('userId');
+      // this.UserName=localStorage.getItem('UserName');
+     
+    
   }
 
   onSave() {

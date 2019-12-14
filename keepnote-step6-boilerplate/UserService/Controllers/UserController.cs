@@ -13,7 +13,7 @@ namespace UserService.Controllers
    As in this assignment, we are working with creating RESTful web service to create microservices, hence annotate
    the class with [ApiController] annotation and define the controller level route as per REST Api standard.
    */
-   [Authorize]
+   
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : Controller
@@ -66,6 +66,7 @@ namespace UserService.Controllers
          * 
          * This handler method should map to the URL "/api/user/{id}" using HTTP PUT method.
          */
+        [Authorize]
         [HttpPut]
         [Route("{UserId}")]
         public IActionResult Put([FromBody] User user, string UserId)
@@ -77,6 +78,7 @@ namespace UserService.Controllers
                 user1.UserId = user.UserId;
                 user1.Name = user.Name;
                 user1.Contact = user.Contact;
+                user1.AddedDate = DateTime.Now;
 
 
                 //  return StatusCode((int)HttpStatusCode.OK, service.UpdateUser(UserId, user1));
@@ -104,6 +106,7 @@ namespace UserService.Controllers
          * This handler method should map to the URL "/api/user/{id}" using HTTP Delete
          * method" where "id" should be replaced by a valid userId without {}
          */
+         [Authorize]
         [HttpDelete]
         [Route("{userId}")]
         public ActionResult Delete(string userId)
@@ -133,7 +136,7 @@ namespace UserService.Controllers
          * This handler method should map to the URL "/api/user/{id}" using HTTP GET method where "id" should be
          * replaced by a valid userId without {}
          */
-
+        [Authorize]
         [HttpGet]
         [Route("{userId}")]
         public IActionResult Get(string userId)

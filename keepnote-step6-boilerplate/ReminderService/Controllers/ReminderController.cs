@@ -124,7 +124,7 @@ namespace ReminderService.Controllers
                 Reminder obj = service.GetReminderById(reminderId);
                 obj.Id = reminder.Id;
                 obj.Name = reminder.Name;
-                obj.CreationDate = reminder.CreationDate;
+                obj.CreationDate = DateTime.Now;
                 obj.Description = reminder.Description;
                 obj.CreatedBy = reminder.CreatedBy;
                 obj.Type = reminder.Type;

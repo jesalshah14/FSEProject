@@ -116,7 +116,7 @@ namespace CategoryService.API.Controllers
                 Category obj = categoryservice.GetCategoryById(CategoryId);
                 obj.Id = category.Id;
                 obj.Name = category.Name;
-                obj.CreationDate = category.CreationDate;
+                obj.CreationDate = DateTime.Now;
                 obj.Description = category.Description;
                 obj.CreatedBy = category.CreatedBy;
                 

@@ -68,7 +68,7 @@ namespace UserService.Service
         public bool UpdateUser(string userId, User user)
         {
             var users = repo.GetUserById(userId);
-            if (users == null)
+            if (users == null || user.UserId != userId)
             {
                 throw new UserNotFoundException($"This user id does not exist");
             }

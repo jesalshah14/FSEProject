@@ -35,6 +35,7 @@ export class AuthenticationService {
     return localStorage.getItem('userId');
   }
   public setUserName(userName : string){
+    console.log(userName);
     localStorage.setItem('UserName', userName);
   }
   public getUserName(){

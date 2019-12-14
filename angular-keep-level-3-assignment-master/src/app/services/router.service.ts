@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { e } from '@angular/core/src/render3';
 
 @Injectable()
 export class RouterService {
@@ -16,8 +17,23 @@ export class RouterService {
   }
 
   routeToSignUp() {
+    
     this.router.navigate(['signup']);
   }
+
+  routeToEditUserView(userId){
+    console.log(userId);
+    this.router.navigate(['user/edit',userId]);
+  }
+
+  routeToUserDetails(){
+    this.router.navigate(['user']);
+  }
+
+  routeToUser() {
+    this.router.navigate(['user']);
+  }
+
 
   routeToEditNoteView(noteId) {
     this.router.navigate([

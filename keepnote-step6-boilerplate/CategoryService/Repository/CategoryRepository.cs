@@ -28,6 +28,7 @@ namespace CategoryService.Repository
 
 
                 }
+                category.CreationDate = DateTime.Now;
                 context.Categories.InsertOne(category);
 
                 return category;

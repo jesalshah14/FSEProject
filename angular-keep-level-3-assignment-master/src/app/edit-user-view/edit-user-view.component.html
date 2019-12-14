@@ -1,0 +1,22 @@
+
+<h1>Edit User</h1>
+<div  class="userForm">
+
+    <mat-form-field>
+        <input [(ngModel)]="user.userId" name="UserId" matInput placeholder="UserId" type="text" required>
+      </mat-form-field>
+<mat-form-field>
+  <input [(ngModel)]="user.name" name="UserName" matInput placeholder="Name" type="text">
+</mat-form-field>
+<mat-form-field>
+  <textarea [(ngModel)]="user.contact" name="Contact" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+     matInput placeholder="Contact Number"></textarea>
+</mat-form-field>
+ 
+
+<div>
+  <button class="save-css" mat-button  mat-raised-button color="primary" (click)="onSave()" >Save</button>
+</div>
+</div>
+
+<i><label class="error-message">{{ submitMessage }}</label></i>
