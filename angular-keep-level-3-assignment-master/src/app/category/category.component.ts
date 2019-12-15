@@ -3,6 +3,7 @@ import { Category } from '../category';
 import { FormControl, Validators, RequiredValidator } from '@angular/forms';
 import { CategoryService } from '../services/category.service';
 import { RouterService } from '../services/router.service';
+import { empty } from 'rxjs/Observer';
 
 @Component({
   selector: 'app-category',
@@ -36,9 +37,10 @@ name = new FormControl('');
   createCategory() {
 
 
-    if(this.name.value ==''  || this.name.value ==''){
+    if(this.name.value == null  || this.description.value == null 
+      || this.name.value == ''  || this.description.value == '' ){
   // if (this.name.hasError('required') || this.description.hasError('required'))
-    this.errMessage = 'name and description required';
+    this.errMessage = 'name and description required !';
   } else {
     this.errMessage = '';
 console.log('required -'+this.name.value);
@@ -53,30 +55,37 @@ console.log('created category'+JSON.stringify(this.categoryArr));
     
     }
     ,error=>{
-
-      debugger;
       if (error.status === 409) {
-        this.errMessage = 'Unauthorized User, Please Sign Up';
+        this.errMessage = 'Category already exist.';
       }
     else {
-      this.errMessage = 'Invalid user details';
+      this.errMessage = 'Invalid details';
       }
     });
   }
   }
 
   deleteCategory(categoryId) {
-    debugger;
+  debugger;
     this.categoryService.deleteCategory(categoryId).subscribe(result => {
-      const index = this.categoryArr.findIndex(ele => ele.Id == categoryId);
+      const index = this.categoryArr.findIndex(ele => ele.Id === categoryId);
+    this.categoryArr.splice(index, 1);
+    this.categoryService.getAllCategoryByUserId();
+    } ,error=>{
+
       debugger;
-      this.categoryArr.splice(index, 1);
+      if (error.status === 404) {
+        this.errMessage = 'Category id not found';
+      }
+    else {
+      this.errMessage = 'Invalid details';
+      }
     });
     this.routerService.routeToCategory();
   }
 
   updateCategory(categoryId) {
-    debugger;
+    
     this.routerService.routeToEditCategoryView(categoryId);
   }
 

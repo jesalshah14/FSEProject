@@ -20,18 +20,29 @@ namespace CategoryService.Repository
         {
             try
             {
-                int id = category.Id;
-                if (id == 0)
-                {
-                    var lastCategory = context.Categories.Find(_ => true).ToList();
-                    category.Id = (lastCategory.Last().Id) + 1;
-
-
+                var cat = context.Categories.Find(_ => true).ToList();
+                bool isNameExist = cat.Find(s => s.Name == category.Name && s.CreatedBy == category.CreatedBy) == null ? true : false;               
+                if (isNameExist == false)
+                    {
+                    return null;
+                    
                 }
-                category.CreationDate = DateTime.Now;
-                context.Categories.InsertOne(category);
+                else
+                {
+                   var  recentCategory = context.Categories.Find(f => f.Id != category.Id).ToList().OrderByDescending(o => o.Id).FirstOrDefault();
+                    var id = 10;
+                    if (recentCategory != null)
+                    {
+                        id = recentCategory.Id + 1;
+                    }
+                    category.Id = id;
+                    category.CreationDate = DateTime.Now;
 
-                return category;
+                    context.Categories.InsertOne(category);
+
+                    return category;
+                }
+               
             }
             catch
             {

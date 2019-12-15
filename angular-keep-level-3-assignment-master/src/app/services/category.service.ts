@@ -27,7 +27,7 @@ export class CategoryService {
   }
 
   createCategory(category: Category): Observable<Category> {
-    debugger;
+  
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     category.CreatedBy = userId;
@@ -39,6 +39,7 @@ export class CategoryService {
   }
 
   deleteCategory(categoryId): any {
+   // debugger;
     const bearerToken = this.authService.getBearerToken();
     return this.httpClient.delete<any>(`${this.url}/${categoryId}`,
      { 
@@ -82,7 +83,7 @@ console.log('error -get category by userid');
   }
 
   getCategoryById(categoryId): Observable<Category> {
-debugger;
+
     const bearerToken = this.authService.getBearerToken();
     return this.httpClient.get<Category>(`${this.url}/${categoryId}`,
       { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
