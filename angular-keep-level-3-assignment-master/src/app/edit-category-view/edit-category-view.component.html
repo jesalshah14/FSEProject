@@ -8,6 +8,6 @@
     <textarea [(ngModel)]="category.description" [formControl]="description" matInput placeholder="description" required></textarea>
   </mat-form-field><br>
   <div>
-    <button class="category-fields" mat-button color="primary" (click)="onSave(category.id)">Save</button>
+    <button class="category-fields"  mat-raised-button color="primary" (click)="onSave(category.id)">Save</button>
   </div>
   <label class="error-message">{{ errMessage }}</label>

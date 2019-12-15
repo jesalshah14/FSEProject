@@ -66,14 +66,16 @@ console.log('created category'+JSON.stringify(this.categoryArr));
   }
 
   deleteCategory(categoryId) {
-  debugger;
+ // debugger;
     this.categoryService.deleteCategory(categoryId).subscribe(result => {
       const index = this.categoryArr.findIndex(ele => ele.Id === categoryId);
     this.categoryArr.splice(index, 1);
-    this.categoryService.getAllCategoryByUserId();
+
+    this.routerService.routeToCategory();
+   // this.categoryService.getAllCategoryByUserId();
     } ,error=>{
 
-      debugger;
+     /// debugger;
       if (error.status === 404) {
         this.errMessage = 'Category id not found';
       }

@@ -12,15 +12,20 @@
 						Category 
 				   </button>
 				   <mat-divider></mat-divider>
-				   <button class="category" mat-menu-item (click)="routeToCategory()">
+				   <button class="reminder" mat-menu-item (click)="routeToReminder()">
 						<mat-icon class="maticon">alarm</mat-icon>
 						Reminder 
 				   </button>
 				   <mat-divider></mat-divider>
-				   <button class="category" mat-menu-item (click)="routeToCategory()">
+				   <button class="category" mat-menu-item (click)="switchToNoteView()">
 						<mat-icon class="maticon">note</mat-icon>
 						Notes 
 				   </button>
+				   <button class="category" mat-menu-item (click)="routeToUserDetails()">
+					<mat-icon class="maticon">person</mat-icon>
+					UserProfile 
+			   </button>
+
 				   <!-- <mat-divider></mat-divider> -->
 				  <!-- <button class="note" mat-menu-item (click)="routeToReminder()">
 						<mat-icon class="maticon">alarm</mat-icon>

@@ -50,7 +50,7 @@ namespace ReminderService.Service
         public List<Reminder> GetAllRemindersByUserId(string userId)
         {
             var rem = repo.GetAllRemindersByUserId(userId);
-            if (rem == null || rem.Count == 0)
+            if (rem == null)
             {
                 throw new ReminderNotFoundException($"This reminder id not found");
             }

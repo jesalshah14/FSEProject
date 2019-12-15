@@ -1,0 +1,47 @@
+.category-item{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}
+.button-css{
+    background-color: rgb(9, 112, 216);
+    width: 10%;
+   
+  }
+  .category-box
+  {
+    float:left;
+    margin-left:2%
+  }
+.cards-layout{
+ 
+  
+  width:15vw;
+  margin:10px;
+  margin-top: 20px;
+  border:1px solid gainsboro;
+ 
+  /* display:flex;
+  flex-direction: column; */
+  
+ background-color: gainsboro;
+ justify-content:space-around;
+
+}
+  .category-expansion-panel {
+    width: 30vw;
+    margin: auto;
+    }
+
+   .matinput{
+     width:25vw;
+   }
+
+   .error-message{
+   
+        /* font-style: italic; */
+        color: red;
+        position: absolute;
+    
+        right: 35em;
+        bottom: 8em;
+   }

@@ -39,9 +39,11 @@ export class HeaderSubComponent implements OnInit {
     this.routerService.routeToCategory();
   }
 
-  // routeToReminder() {
-  //   this.routeService.routeToReminder();
-  // }
+  routeToReminder() {
+    this.routerService.routeToReminder();
+  }
+
+  
   logoutUser() {
     localStorage.removeItem('bearerToken');
     localStorage.removeItem('userId');

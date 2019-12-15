@@ -38,6 +38,10 @@ import { CategoryService } from './services/category.service';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 //import { CanActivateRouteGuard } from './can-activate-route.guard';
 import {MatDividerModule} from '@angular/material/divider';
+import { ReminderComponent } from './reminder/reminder.component';
+import { ReminderViewComponent } from './reminder-view/reminder-view.component';
+import { EditReminderOpenerComponent } from './edit-reminder-opener/edit-reminder-opener.component';
+import { ReminderService } from './services/reminder.service';
 
 const appRoute: Routes = [
   {
@@ -56,6 +60,13 @@ const appRoute: Routes = [
     path: 'category', component: CategoryComponent,
     children: [{
       path: 'category/:categoryId/edit', component: EditCategoryOpenerComponent, outlet: 'categoryEditOutlet'
+    }
+   ]
+  },
+  {
+    path: 'reminder', component: ReminderComponent,
+    children: [{
+      path: 'reminder/:reminderId/edit', component: EditReminderOpenerComponent, outlet: 'reminderEditOutlet'
     }
    ]
   },
@@ -104,7 +115,10 @@ const appRoute: Routes = [
     HeaderSubComponent,
     CategoryComponent,
     EditCategoryViewComponent,
-    EditCategoryOpenerComponent
+    EditCategoryOpenerComponent,
+    ReminderComponent,
+    ReminderViewComponent,
+    EditReminderOpenerComponent
   ],
   imports: [
     BrowserModule,
@@ -131,10 +145,11 @@ const appRoute: Routes = [
    // CanActivateRouteGuard,
     NotesService,
     UserService,
-    CategoryService
+    CategoryService,
+    ReminderService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [EditNoteViewComponent, EditCategoryViewComponent]
+  entryComponents: [EditNoteViewComponent, EditCategoryViewComponent, ReminderViewComponent]
 })
 
 export class AppModule { }

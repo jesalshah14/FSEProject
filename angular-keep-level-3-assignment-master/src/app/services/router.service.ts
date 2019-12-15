@@ -34,15 +34,13 @@ export class RouterService {
     this.router.navigate(['user']);
   }
 
-
-
-  routeToCategory() {
+routeToCategory() {
     this.router.navigate(['category']);
   }
 
-  // routeToReminder() {
-  //   this.router.navigate(['reminder']);
-  // }
+  routeToReminder() {
+    this.router.navigate(['reminder']);
+  }
 
   routeToEditCategoryView(categoryId) {
     this.router.navigate(['category', {
@@ -52,13 +50,15 @@ export class RouterService {
     }]);
   }
 
-  // routeToEditReminderView(reminderId) {
-  //   this.router.navigate(['reminder', {
-  //     outlets: {
-  //       reminderEditOutlet: ['reminder', reminderId, 'edit']
-  //     }
-  //   }]);
-  // }
+  routeToEditReminderView(reminderId) {
+    this.router.navigate(['reminder', {
+      outlets: {
+        reminderEditOutlet: ['reminder', reminderId, 'edit']
+      }
+    }]);
+  }
+
+  
   routeToEditNoteView(noteId) {
     this.router.navigate([
       'dashboard', {

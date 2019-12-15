@@ -1,0 +1,14 @@
+<mat-form-field>
+  <input [(ngModel)]="reminder.name" [formControl]="name" name="Name" required matInput placeholder="Name" type="text">
+</mat-form-field><br>
+<mat-form-field>
+  <input [(ngModel)]="reminder.description" [formControl]="description"  required name="Description" matInput placeholder="Description" type="text">
+</mat-form-field><br>
+<mat-form-field>
+  <input [(ngModel)]="reminder.type" name="Type" [formControl]="type" matInput placeholder="Type" required type="text">
+</mat-form-field><br>
+<div >
+  <button mat-raised-button color="primary" (click)="onSave(reminder.id)">Save</button>
+</div>
+
+<label class="error-message">{{ errMessage }}</label>

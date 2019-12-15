@@ -19,14 +19,29 @@ namespace ReminderService.Repository
         {
             try
             {
-                if (reminder.Id == 0)
+                var cat = context.Reminders.Find(_ => true).ToList();
+                bool isNameExist = cat.Find(s => s.Name == reminder.Name && s.CreatedBy == reminder.CreatedBy) == null ? true : false;
+                if (isNameExist == false)
                 {
-                    var rem = context.Reminders.Find(_ => true).ToList();
-                    reminder.Id = (rem.Last().Id) + 1;
+                    return null;
+
                 }
-                reminder.CreationDate = DateTime.Now;
-                context.Reminders.InsertOne(reminder);
-                return context.Reminders.Find( R => R.Name == reminder.Name).FirstOrDefault();
+                else
+                {
+                    var recentCategory = context.Reminders.Find(f => f.Id != reminder.Id).ToList().OrderByDescending(o => o.Id).FirstOrDefault();
+                    var id = 10;
+                    if (recentCategory != null)
+                    {
+                        id = recentCategory.Id + 1;
+                    }
+                    reminder.Id = id;
+                    reminder.CreationDate = DateTime.Now;
+
+                    context.Reminders.InsertOne(reminder);
+
+                    return context.Reminders.Find( R => R.Name == reminder.Name).FirstOrDefault();
+                }
+
             }
             catch
             {

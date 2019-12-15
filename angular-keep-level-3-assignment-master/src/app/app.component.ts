@@ -32,8 +32,8 @@ export class AppComponent {
     this.routeService.routeToCategory();
   }
 
-  // routeToReminder() {
-  //   this.routeService.routeToReminder();
-  // }
+  routeToReminder() {
+    this.routeService.routeToReminder();
+  }
 
 }
