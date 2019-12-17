@@ -2,26 +2,57 @@
 
 <!-- Expansion panel to add new notes -->
 <div class="noteInputcontainer">
+        <mat-accordion>
     <mat-expansion-panel>
         
         <mat-expansion-panel-header>
-            <mat-panel-title>Take a note</mat-panel-title>
+            <h4><mat-panel-title>Take a note</mat-panel-title></h4>
         </mat-expansion-panel-header>
 
-        <div class='noteInputs'>
+        <!-- <div class='noteInputs'>
             <mat-form-field>
-                <input matInput name="title" [(ngModel)]="note.title" placeholder="Enter Note Title">
+                <input matInput name="title" [(ngModel)]="note.Title" placeholder="Enter Note Title">
             </mat-form-field>
-
             <mat-form-field>
-                <textarea matInput name="text" [(ngModel)]="note.text" placeholder="Enter Note Text"></textarea>
+                <textarea matInput name="text" [(ngModel)]="note.Content" placeholder="Enter Note Text"></textarea>
             </mat-form-field>
 
             <div class='noteSubmit'>
                 <button mat-raised-button (click)="takeNotes()" color="primary">Done</button>
             </div>
+        </div> -->
+
+        <div class="noteInputs">
+            <form action="" [formGroup]="noteTakerForm" (ngSubmit)="takeNotes()">
+                <mat-form-field class="noteInputsfields">
+                    <input matInput placeholder="Enter Note Title" name="Title" formControlName="Title">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="noteInputsfields">
+                    <textarea matInput placeholder="Enter Note Content" name="content" formControlName="Content"></textarea>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-select placeholder="Select category" formControlName="category" name="category">
+                        <mat-option *ngFor="let category of categories" [value]="category">
+                            {{category.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <label>Reminders:</label>
+                <div class="checkbox" *ngFor="let reminder of reminders">
+                    <input formControlName="reminder" type="checkbox" value="{{reminder}}" (change)="onChange(reminder,$event)">{{reminder.name}}
+                </div>
+                <div  class='noteSubmit'>
+                <button mat-raised-button color="primary" class="button-css">Save</button></div>
+            </form>
         </div>
+
+
+
     </mat-expansion-panel>
+</mat-accordion>
 </div>
 
 <!-- Label to display any error messages -->

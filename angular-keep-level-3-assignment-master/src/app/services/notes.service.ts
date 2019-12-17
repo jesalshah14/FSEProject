@@ -5,42 +5,59 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
+import { RouterService } from './router.service';
 
 @Injectable()
 export class NotesService {
-
+  public url = 'http://localhost:8082/api/notes';
   notes: Array<Note> = [];
   //hot observable
   notesSubject: BehaviorSubject<Array<Note>> = new BehaviorSubject(this.notes);
 
   token: any;
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) {
-    this.fetchNotesFromServer();
+  constructor(private httpClient: HttpClient, private authService: AuthenticationService,
+    private router: RouterService) {
+  this.fetchNotesFromServer();
   }
 
   fetchNotesFromServer() {
-    this.token = this.authService.getBearerToken();
-    this.http.get<Array<Note>>('http://localhost:3000/api/v1/notes', {
+   const  bearerToken= this.authService.getBearerToken();
+    const userId = this.authService.getUserId();
+    if (userId === null || bearerToken === null) {
+      
+      this.router.routeToLogin();
+    }
+    this.httpClient.get<Array<Note>>(`${this.url}/${userId}`, {
       headers: new HttpHeaders()
-        .set('Authorization', `Bearer ${this.token}`)
+        .set('Authorization', `Bearer ${bearerToken}`)
     }).subscribe(data => {
       this.notes = data;
       this.notesSubject.next(this.notes);
     },
-      (err) => { });
+      (err) => { 
+
+        this.router.routeToLogin();
+      });
   }
+
+
+
+
 
   getNotes(): BehaviorSubject<Array<Note>> {
     return this.notesSubject;
   }
 
   addNote(note: Note): Observable<Note> {
-
+    const bearerToken = this.authService.getBearerToken();
+    const userId = this.authService.getUserId();
+    note.CreatedBy = userId;
+   // console.log('add note - service'+JSON.stringify(note));
     console.log("jes");
-    return this.http.post<Note>('http://localhost:3000/api/v1/notes', note, {
+    return this.httpClient.post<Note>(`${this.url}/${userId}`, note, {
       headers: new HttpHeaders()
-        .set('Authorization', `Bearer ${this.token}`)
+        .set('Authorization', `Bearer ${bearerToken}`)
     })
       .pipe(tap(addedNote => {
         this.notes.push(addedNote);
@@ -49,21 +66,47 @@ export class NotesService {
       );
   }
 
-  editNote(note: Note): Observable<Note> {
-    return this.http.put<Note>(`http://localhost:3000/api/v1/notes/${note.id}`, note, {
+
+
+
+
+  editNote(Id,note: Note): Observable<Note> {
+    const bearerToken = this.authService.getBearerToken();
+    const userId = this.authService.getUserId();
+//console.log('note id -'+Id + JSON.stringify(note));
+    return this.httpClient.put<Note>(`${this.url}/${userId}/${Id}`, note, {
       headers: new HttpHeaders()
-        .set('Authorization', `Bearer ${this.token}`)
+        .set('Authorization', `Bearer ${bearerToken}`)
     })
       .pipe(tap(edittedNote => {
-        const selectedNote = this.notes.find((currentNote) => currentNote.id === edittedNote.id);
+        const selectedNote = this.notes.find((currentNote) => currentNote.Id === edittedNote.Id);
+        // const data = this.notes.find(notes => notes.Id === editNote.Id);
         Object.assign(selectedNote, edittedNote);
         this.notesSubject.next(this.notes);
       })
       );
   }
 
-  getNoteById(noteId): Note {
-    const selectedNote = this.notes.find(x => x.id === noteId);
-    return selectedNote;
+
+
+  getNoteById(noteId): any {
+    // const selectedNote = this.notes.find(x => x.id === noteId);
+    // return selectedNote;
+
+    const bearerToken = this.authService.getBearerToken();
+    const userId = this.authService.getUserId();
+    return this.httpClient.get<Note>(`${this.url}/${userId}`,
+     { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
+      );
   }
+
+
+  deleteNote(noteId): any {
+    const bearerToken = this.authService.getBearerToken();
+    const userId = this.authService.getUserId();
+    return this.httpClient.delete<any>(`${this.url}/${userId}/${noteId}`,
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) });
+  }
+
+
 }

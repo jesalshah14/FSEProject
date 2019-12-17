@@ -28,17 +28,17 @@ export class EditNoteViewComponent implements OnInit {
      
     
   }
-
-  onSave() {
-    this.noteService.editNote(this.note).subscribe(response => {
-      this.dialogRef.close();
-    },
-      err => {
-        if (err.status === 404) {
-          this.errMessage = err.message;
-        } else {
-          this.errMessage = err.error.message;
-        }
-      });
-  }
+  //Id:number;
+  // onSave() {
+  //   this.noteService.editNote(this.note).subscribe(response => {
+  //     this.dialogRef.close();
+  //   },
+  //     err => {
+  //       if (err.status === 404) {
+  //         this.errMessage = err.message;
+  //       } else {
+  //         this.errMessage = err.error.message;
+  //       }
+  //     });
+  // }
 }

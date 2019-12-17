@@ -42,14 +42,14 @@ namespace NoteService.Service
         public List<Note> GetAllNotesByUserId(string userId)
         {
             var _note = repo.FindAllNotesByUser(userId);
-            if (_note == null)
-            {
-                throw new NoteNotFoundExeption($"Note with userId: {userId} does not exist");
-            }
-            else
-            {
+            //if (_note == null)
+            //{
+            //    throw new NoteNotFoundExeption($"Note with userId: {userId} does not exist");
+            //}
+            //else
+            //{
                 return _note;
-            }
+            //}
         }
 
         //This method is used to update an existing note for a user

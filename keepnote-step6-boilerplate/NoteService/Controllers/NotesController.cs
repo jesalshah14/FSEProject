@@ -147,7 +147,7 @@ namespace NoteService.Controllers
         {
             try
             {
-                return Ok(service.GetAllNotesByUserId(userId));
+               return Ok(service.GetAllNotesByUserId(userId));
             }
             catch (NoteNotFoundExeption ex)
             {

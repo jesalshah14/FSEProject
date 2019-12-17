@@ -36,11 +36,14 @@ namespace NoteService.Repository
                 }
 
                 var userExists = context.Notes.Find(N => N.UserId == note.CreatedBy).FirstOrDefault();
+               
                 if (userExists == null || userExists.Notes.Count() == 0)
                     {
                     List<Note> NoteList = new List<Note>();
-                    NoteList.Add(note);
                     note.Id = id;
+                    NoteList.Add(note);
+
+                   
                   var noteuser = new NoteUser { UserId = note.CreatedBy, Notes = NoteList };
                     context.Notes.InsertOne(noteuser);
                     status = true;
@@ -49,8 +52,9 @@ namespace NoteService.Repository
                 {
 
                     var existingNotes = userExists.Notes;
-                    existingNotes.Add(note);
                     note.Id = id;
+                    existingNotes.Add(note);
+                   
                     var filter = Builders<NoteUser>.Filter.Where(C => C.UserId == userExists.UserId);
                     var update = Builders<NoteUser>.Update.Set(S => S.Notes, existingNotes);
                     var updateResult = context.Notes.UpdateOne(filter, update);

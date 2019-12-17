@@ -14,6 +14,6 @@ export class NoteComponent {
   constructor(private routerService: RouterService) { }
 
   openEditView() {
-    this.routerService.routeToEditNoteView(this.note.id);
+    this.routerService.routeToEditNoteView(this.note.Id);
   }
 }
