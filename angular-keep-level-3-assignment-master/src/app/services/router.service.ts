@@ -70,6 +70,14 @@ routeToCategory() {
   }
 
 
+  routeToAddReminderView(noteId){
+    this.router.navigate(['dashboard', {
+      outlets: {
+        noteReminderOutlet: ['note', noteId, 'addreminder']
+      }
+    }]);
+  }
+
   routeToNoteView() {
     this.router.navigate(['dashboard/view/noteview']);
   }

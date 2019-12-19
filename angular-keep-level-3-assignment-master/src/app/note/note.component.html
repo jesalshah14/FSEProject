@@ -1,7 +1,36 @@
-<mat-card class="noteCard" (click)='openEditView()'>
+<!-- <mat-card class="noteCard" (click)='openEditView()'>
 
     <mat-card-title>{{note.title}}</mat-card-title>
 
     <mat-card-content>{{note.content}}</mat-card-content>
 
-</mat-card>
+</mat-card> -->
+
+<div class="noteCard">
+    <mat-card class="cards" >
+            <!-- (click)="openEditNoteView(note.id)" -->
+     <div  >  
+        <mat-card-title>Title: {{note.title}}</mat-card-title>
+        <mat-card-content>Text: {{note.content}}</mat-card-content>
+        <mat-card-content>Status: {{note.status}}</mat-card-content>
+        <mat-card-content  class="category" >Category: {{note.category?.name}}</mat-card-content>
+        <div *ngIf="note.reminders"></div>
+        <mat-card-content *ngIf=note.reminders> 
+            <b>Reminder : </b>
+        </mat-card-content>
+        <div class="reminder" *ngFor="let reminder of note.reminders">
+                &nbsp;<span class=""></span> 
+                <mat-card-content>{{reminder.name}}</mat-card-content>
+        </div>
+    </div>  
+    
+    <!-- <span class="glyphicon glyphicon-trash " (click)="deleteNote()"></span> -->
+    <button class="delete" mat-button (click)="deleteNote(note.id)" title="Delete">
+            <mat-icon class="maticon">delete</mat-icon>
+          </button> |
+          <button class="edit" mat-button (click)="openEditView(note.id)" title="Edit">
+            <mat-icon class="maticon">edit</mat-icon>
+          </button>  
+    </mat-card>
+    
+</div>

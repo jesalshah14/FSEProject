@@ -88,12 +88,12 @@ this.errMessage = '';
     }
     else {
       this.notesService.addNote(this.note).subscribe(addnote => {
-       /// this.notesService.fetchNotesFromServer();
+      this.notesService.fetchNotesFromServer();
         this.errMessage ="";
       },
       
       error => {
-       console.log('note add error'+error.errMessage);
+       console.log('note POST error'+error.errMessage);
         // const index = this.notes.findIndex(note => note.Title === this.note.Title);
         // this.notes.splice(index, 1);
         // this.errMessage = 'Http failure response for http://localhost:8086/api/note: 404 Not Found';
@@ -102,13 +102,6 @@ this.errMessage = '';
     }
     this.noteTakerForm.reset();
     this.checkedReminders = [];
-
-
-
-
-
-
-
 
   }
 

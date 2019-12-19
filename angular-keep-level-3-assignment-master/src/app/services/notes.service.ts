@@ -59,11 +59,11 @@ export class NotesService {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
     })
-      .pipe(tap(addedNote => {
-        this.notes.push(addedNote);
-        this.notesSubject.next(this.notes);
-      })
-      );
+      // .pipe(tap(addedNote => {
+      //   this.notes.push(addedNote);
+      //   this.notesSubject.next(this.notes);
+      // })
+      // );
   }
 
 

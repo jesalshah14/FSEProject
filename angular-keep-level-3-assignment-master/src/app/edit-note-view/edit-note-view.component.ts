@@ -2,6 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Note } from '../note';
 import { NotesService } from '../services/notes.service';
+import { Category } from '../category';
+import { CategoryService } from '../services/category.service';
+import { ReminderService } from '../services/reminder.service';
+import { Reminder } from '../reminder';
 
 @Component({
   selector: 'app-edit-note-view',
@@ -14,10 +18,24 @@ export class EditNoteViewComponent implements OnInit {
   note: Note;
   states: Array<string> = ['not-started', 'started', 'completed'];
   errMessage: string;
-
+  categories: Category[];
+  reminders: Reminder[];
+  checkedReminders = [];
   constructor(private dialogRef: MatDialogRef<EditNoteViewComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private noteService: NotesService) {
+    private noteService: NotesService, private categoryService :CategoryService,
+    private reminderService:ReminderService) {
+      this.categoryService.getAllCategoryByUserId();
+      this.categoryService.getAllCategories().subscribe(res=>{
+        this.categories = res;
+      console.log(this.categories);
+      })
+      // this.reminderService.getAllRemindersByUserId();
+      // this.reminderService.getAllReminders().subscribe(res => {
+      //   this.reminders = res;
+        
+      //   console.log('note taker reminder'+  this.reminders);
+      // })
   }
 
   ngOnInit() {
@@ -41,4 +59,15 @@ export class EditNoteViewComponent implements OnInit {
   //       }
   //     });
   // }
+
+
+  onChange(reminder, event) {
+    if (event.target.checked) {
+      this.checkedReminders.push(reminder);
+    }
+    else if (!event.target.checked) {
+      const index = this.checkedReminders.findIndex(rem => rem.Id === reminder.reminderId);
+      this.checkedReminders.splice(index, 1);
+    }
+  }
 }

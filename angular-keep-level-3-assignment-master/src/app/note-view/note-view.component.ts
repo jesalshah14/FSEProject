@@ -22,7 +22,7 @@ constructor(private noteservice: NotesService) {
 // after the componrnt get constructed it gets initialised 
   ngOnInit() {
     this.noteservice.getNotes().subscribe(
-      result => {  console.log(result); this.notes = result; }
+      result => {  console.log('Notes',result); this.notes = result; }
       , err => { this.errMessage = err.errMessage;    console.log(err); }
     );
   }

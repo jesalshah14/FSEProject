@@ -87,14 +87,16 @@ namespace NoteService.Repository
             var noteUser = context.Notes.Find(S => S.UserId == userId).FirstOrDefault();
             if (noteUser != null)
             {
-               
-                var note = noteUser.Notes.FindAll(N => N.Id == noteId);
+
+                var note = noteUser.Notes.FindAll(S => S.CreatedBy == userId);
+
                 if (note.Count() == 0)
                 {
-                    return false;
+                    return true;
                 }
                 if (note.Count() > 1)
                 {
+
                     var existingNotes = note;
                     existingNotes.RemoveAll(S => S.Id == noteId);
 
@@ -107,9 +109,20 @@ namespace NoteService.Repository
                 }
                 else
                 {
+                    // note.RemoveAll(S => S.Id == noteId && S.CreatedBy == userId);
+
+
+                    //var filter = Builders<NoteUser>.Filter.Where(C => C.UserId == userId);
+                    //var update = Builders<NoteUser>.Update.Set(S => S.Notes, note);
+                    //var updateResult = context.Notes.UpdateOne(filter, update);
+                    //status = updateResult.IsAcknowledged == true ? true : false;
+
+
                     var delCount = context.Notes.DeleteOne(S => S.UserId == userId);
                     status = delCount.IsAcknowledged ? true : false;
+
                 }
+
             }
             else
             {

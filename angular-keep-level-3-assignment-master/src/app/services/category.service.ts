@@ -62,7 +62,7 @@ export class CategoryService {
   }
 
   getAllCategoryByUserId() {
-    debugger;
+    ///debugger;
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     if(userId === null || bearerToken === null){
@@ -74,7 +74,7 @@ export class CategoryService {
       
       
       ).subscribe(res => {
-        debugger;
+      //  debugger;
 console.log('success -create category by userid');
         this.categories = res;
         this.categoryBehavior.next(this.categories);

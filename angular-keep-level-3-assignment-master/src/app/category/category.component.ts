@@ -71,8 +71,8 @@ console.log('created category'+JSON.stringify(this.categoryArr));
       const index = this.categoryArr.findIndex(ele => ele.Id === categoryId);
     this.categoryArr.splice(index, 1);
 
-    this.routerService.routeToCategory();
-   // this.categoryService.getAllCategoryByUserId();
+   /// this.routerService.routeToCategory();
+   this.categoryService.getAllCategoryByUserId();
     } ,error=>{
 
      /// debugger;
