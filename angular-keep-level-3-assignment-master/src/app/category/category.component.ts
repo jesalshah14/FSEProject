@@ -44,7 +44,7 @@ name = new FormControl('');
   } else {
     this.errMessage = '';
 console.log('required -'+this.name.value);
-    this.category.Name = this.name.value;
+    this.category.name = this.name.value;
     this.category.Description = this.description.value;
     this.categoryService.createCategory(this.category).subscribe(value => {
     

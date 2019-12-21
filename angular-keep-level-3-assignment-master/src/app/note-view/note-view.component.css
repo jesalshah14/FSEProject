@@ -3,3 +3,17 @@
     margin:5.5em;
     flex-wrap: wrap;
 }
+
+
+.formSearch{
+  position: absolute;
+  /* top: -6em; */
+  left: 64em;
+  top: 5em;
+}
+
+.icon{
+  position: relative;
+  right: -9em;
+  top: -22px;
+}

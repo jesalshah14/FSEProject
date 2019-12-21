@@ -18,7 +18,8 @@ export class NotesService {
 
   constructor(private httpClient: HttpClient, private authService: AuthenticationService,
     private router: RouterService) {
-  this.fetchNotesFromServer();
+ this.fetchNotesFromServer();
+
   }
 
   fetchNotesFromServer() {

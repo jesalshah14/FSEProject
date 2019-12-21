@@ -9,6 +9,6 @@ import {NotesService} from '../services/notes.service';
 export class DashboardComponent {
 
   constructor(private noteService: NotesService) {
-  this.noteService.fetchNotesFromServer();
+      this.noteService.fetchNotesFromServer();
   }
 }

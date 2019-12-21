@@ -1,11 +1,15 @@
+<div class="formSearch">
+	<input type="text" placeholder="Search By Category" [(ngModel)]="searchTerm"/>
+	<div class="icon"><mat-icon >search</mat-icon></div>
+</div>
 
 
 <!-- Notes reader panel -->
 <div class="noteCardContainer">
-<!-- JESAL -->
+	<!-- JESAL -->
 	<!-- Include the notes collection with each note rendered as a separate NoteComponent -->
-		<app-note [note]="note" *ngFor = "let note of notes"></app-note>
-		   <!-- <mat-card class="noteCard" *ngFor="let mynote of notes">
+	<app-note [note]="note" *ngFor="let note of filternotes"></app-note>
+	<!-- <mat-card class="noteCard" *ngFor="let mynote of notes">
 			   <mat-card-title>
 				 
 				   {{mynote.title}}
@@ -14,4 +18,4 @@
 					   {{mynote.text}}
 			   </mat-card-content>
 		   </mat-card> -->
-		   </div>
+</div>

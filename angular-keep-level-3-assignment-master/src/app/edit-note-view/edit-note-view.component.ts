@@ -71,37 +71,22 @@ export class EditNoteViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    ///this.note = this.noteService.getNoteById(this.data.noteId);
-   
-      // this.userID = localStorage.getItem('userId');
-      // this.UserName=localStorage.getItem('UserName');
-     
-    
   }
 
 
 
   onSave(Id:number) {
 
-//this.note = this.noteTakerForm.value;
-    // console.log('reminders - '+JSON.stringify( this.note.Reminders));
-     //console.log('check reminders  - '+JSON.stringify(this.checkedReminders));
-    //  if (this.checkedReminders != null && this.checkedReminders.length > 0) {
-    //    this.note.Reminders = this.checkedReminders;
- 
-    //   console.log('reminder for update'+JSON.stringify(this.note.Reminders));
-    //  }
-    //  else {
-    //    debugger;
-    //    this.note.Reminders = null;
-    //  }
-
-
+    if (this.note.content === null || this.note.title === null||
+      this.note.content === '' || this.note.title === '')
+      {
+      this.errMessage = 'Title & Content fields are mandatory !';
+    }
+    else {
      console.log('note for update'+JSON.stringify(this.note));
      this.noteService.editNote(Id,this.note).subscribe(res => {
-      /// this.noteService.getNotes();
-
-       this.noteService.fetchNotesFromServer();
+   
+   this.noteService.fetchNotesFromServer();
      }, error => {
       if (error.status === 404) {
                 this.errMessage = error.message;
@@ -113,64 +98,16 @@ export class EditNoteViewComponent implements OnInit {
                 this.errMessage = error.error.message;
               }
      });
+     this.dialogRef.close();
+    }
     // this.noteTakerForm.reset();
      //this.checkedReminders = [];
-     this.dialogRef.close();
 
    }
  
 
 
-  // onChange(reminder, event) {
-  //   debugger;
-  //   if (event.target.checked) {
-  //     this.checkedReminders.push(reminder);
-  //   }
-  //   else if (!event.target.checked) {
-  //     const index = this.checkedReminders.findIndex(rem => rem.Id === reminder.reminderId);
-  //     this.checkedReminders.splice(index, 1);
-  //     console.log("reminderjes" +JSON.stringify(this.checkedReminders));
-  //   }
-  // }
-
-
-
-
-  // isChecked(Id: number,reminder:Reminder) {
-  //   let checked = false;
-  //  // console.log(this.data[0].reminders.length);
-  //   if (this.data[0].reminders.length>0) {
-  //   //  console.log('hi'+JSON.stringify(this.data[0].reminders));
-  //     const editreminders =<EditReminder[]>this.data[0].reminders;
-  //   //  console.log(editreminders);
-  //     const note =  editreminders.find(rem => rem.id == Id);
-  //   //  console.log(note);
-    
-  //     if (note != null) {
-  //     //console.log('hi'+JSON.stringify(this.checkedReminders));
-  //       const rem = this.checkedReminders.find(rem => rem.Id ==Id);
-  //       if (rem == null) {
-
-  //       console.log('this.checkedReminders'+JSON.stringify(this.checkedReminders));
-  //       }
-  //       else
-  //       {
-  //         console.log('hi hi');
-  //       }
-  //       checked = true;
-  //     }
-  //   }
-  //   return checked;
-  // }
 
 }
 
 
-// export class EditReminder {
-//   id:number;
-//   name:string;
-//   description:string;
-//   type:string;
-//   createdBy:string;
-//   creationDate:string;
-// }

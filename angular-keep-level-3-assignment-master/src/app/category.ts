@@ -1,6 +1,6 @@
 export class Category {
     Id:number;
-    Name:string;
+    name:string;
    Description:string;
    CreatedBy:string;
    CreationDate:string;

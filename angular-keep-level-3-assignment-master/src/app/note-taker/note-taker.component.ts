@@ -26,8 +26,8 @@ export class NoteTakerComponent implements OnInit {
   Reminders: Reminder[];
  // checkedReminders: Reminder[];
   noteTakerForm = this.formBuilder.group({
-    Title: [''],
-    Content: [''],
+    title: [''],
+    content: [''],
     category: [''],
     Reminders: ['']
   })
@@ -64,18 +64,14 @@ export class NoteTakerComponent implements OnInit {
   
 
   takeNotes(){
-debugger;
+
     this.note = this.noteTakerForm.value;
     this.note.Status = 'not-started'
 //console.log('before note add '+JSON.stringify(this.noteTakerForm.value));
 //console.log('before note add '+JSON.stringify(this.note));
 this.errMessage = '';
 
-    // if (this.checkedReminders != null && this.checkedReminders.length > 0) {
-    //   this.note.Reminders = this.checkedReminders;
-    // } else {
-    //   this.note.Reminders = null;
-    // }
+
     // if (!this.note.Reminders) {
     //   this.note.Reminders = null;
     // }
@@ -84,10 +80,10 @@ this.errMessage = '';
     //   this.note.category = null;
     // }
     
-    if (this.note.Content === null || this.note.Title === null||
-      this.note.Content === '' || this.note.Title === '')
+    if (this.note.content === null || this.note.title === null||
+      this.note.content === '' || this.note.title === '')
       {
-      this.errMessage = 'Title & Content fields are mandatory';
+      this.errMessage = 'Title & Content fields are mandatory !';
     }
     else {
       this.notesService.addNote(this.note).subscribe(addnote => {

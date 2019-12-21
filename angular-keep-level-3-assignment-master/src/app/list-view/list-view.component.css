@@ -1,0 +1,13 @@
+.keep-c-list-container{
+    display: flex;
+    margin-top: 60px;
+    flex-direction: column;
+}
+
+.keep-card-notes-list{
+    margin-left: 4px;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: row;
+
+}

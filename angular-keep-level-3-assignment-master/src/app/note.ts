@@ -15,8 +15,8 @@
   
   export class Note {
     Id: Number;
-    Title: string;
-    Content: string;
+    title: string;
+    content: string;
   Status: string;
     CreationDate: string;
     CreatedBy: string;
@@ -24,8 +24,8 @@
     Reminders: Reminder;
     
     constructor() {
-      this.Title = '';
-      this.Content = '';
+      this.title = '';
+      this.content = '';
     this.Status = 'not-started';
     }
     }

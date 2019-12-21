@@ -25,11 +25,11 @@
         <div class="noteInputs">
             <form action="" [formGroup]="noteTakerForm" (ngSubmit)="takeNotes()">
                 <mat-form-field class="noteInputsfields">
-                    <input matInput placeholder="Enter Note Title" name="Title" formControlName="Title">
+                    <input matInput placeholder="Enter Note Title" name="title" formControlName="title">
                 </mat-form-field>
                 <br>
                 <mat-form-field class="noteInputsfields">
-                    <textarea matInput placeholder="Enter Note Content" name="content" formControlName="Content"></textarea>
+                    <textarea matInput placeholder="Enter Note Content" name="content" formControlName="content"></textarea>
                 </mat-form-field>
                 <br>
                 <mat-form-field>
