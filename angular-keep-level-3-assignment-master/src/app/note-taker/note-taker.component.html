@@ -40,10 +40,24 @@
                     </mat-select>
                 </mat-form-field>
                 <br>
-                <label>Reminders:</label>
+                <br>
+                <mat-form-field>
+                    <mat-select placeholder="Select reminder" formControlName="Reminders" name="Reminders">
+                        <mat-option *ngFor="let reminder of Reminders" [value]="reminder">
+                            {{reminder.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+
+
+
+
+                <!-- <label>Reminders:</label>
                 <div class="checkbox" *ngFor="let reminder of reminders">
-                    <input formControlName="reminder" type="checkbox" value="{{reminder}}" (change)="onChange(reminder,$event)">{{reminder.name}}
-                </div>
+                    <input formControlName="reminder" type="checkbox" value="{{reminder}}"
+                     (change)="onChange(reminder,$event)">{{reminder.name}}
+                </div> -->
                 <div  class='noteSubmit'>
                 <button mat-raised-button color="primary" class="button-css">Save</button></div>
             </form>

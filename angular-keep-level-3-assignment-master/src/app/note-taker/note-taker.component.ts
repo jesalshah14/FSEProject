@@ -23,13 +23,13 @@ export class NoteTakerComponent implements OnInit {
   note: Note;
   notes: Note[];
   categories: Category[];
-  reminders: Reminder[];
-  checkedReminders: Reminder[];
+  Reminders: Reminder[];
+ // checkedReminders: Reminder[];
   noteTakerForm = this.formBuilder.group({
     Title: [''],
     Content: [''],
     category: [''],
-    reminder: ['']
+    Reminders: ['']
   })
 
   
@@ -40,8 +40,8 @@ export class NoteTakerComponent implements OnInit {
       this.errMessage ="";
       this.note = new Note();
       this.notes = [];
-      this.reminders = [];
-      this.checkedReminders = [];
+      this.Reminders = [];
+     // this.checkedReminders = [];
       this.categoryService.getAllCategoryByUserId();
       this.categoryService.getAllCategories().subscribe(res=>{
         this.categories = res;
@@ -49,9 +49,9 @@ export class NoteTakerComponent implements OnInit {
       })
       this.reminderService.getAllRemindersByUserId();
       this.reminderService.getAllReminders().subscribe(res => {
-        this.reminders = res;
+        this.Reminders = res;
         
-        //console.log('note taker reminder'+  this.reminders);
+      console.log('note taker reminder'+  this.Reminders);
       })
     }
   ngOnInit() {
@@ -64,27 +64,30 @@ export class NoteTakerComponent implements OnInit {
   
 
   takeNotes(){
-
+debugger;
     this.note = this.noteTakerForm.value;
     this.note.Status = 'not-started'
 //console.log('before note add '+JSON.stringify(this.noteTakerForm.value));
 //console.log('before note add '+JSON.stringify(this.note));
 this.errMessage = '';
 
-    if (this.checkedReminders != null && this.checkedReminders.length > 0) {
-      this.note.Reminders = this.checkedReminders;
-    } else {
-      this.note.Reminders = null;
-    }
+    // if (this.checkedReminders != null && this.checkedReminders.length > 0) {
+    //   this.note.Reminders = this.checkedReminders;
+    // } else {
+    //   this.note.Reminders = null;
+    // }
+    // if (!this.note.Reminders) {
+    //   this.note.Reminders = null;
+    // }
 
-
-    if (!this.note.category) {
-      this.note.category = null;
-    }
+    // if (!this.note.category) {
+    //   this.note.category = null;
+    // }
     
     if (this.note.Content === null || this.note.Title === null||
-      this.note.Content === '' || this.note.Title === '') {
-      this.errMessage = 'Title and Text both are required fields';
+      this.note.Content === '' || this.note.Title === '')
+      {
+      this.errMessage = 'Title & Content fields are mandatory';
     }
     else {
       this.notesService.addNote(this.note).subscribe(addnote => {
@@ -101,19 +104,19 @@ this.errMessage = '';
       //this.note = new Note();
     }
     this.noteTakerForm.reset();
-    this.checkedReminders = [];
+   /// this.checkedReminders = [];
 
   }
 
 
 
-  onChange(reminder, event) {
-    if (event.target.checked) {
-      this.checkedReminders.push(reminder);
-    }
-    else if (!event.target.checked) {
-      const index = this.checkedReminders.findIndex(rem => rem.Id === reminder.reminderId);
-      this.checkedReminders.splice(index, 1);
-    }
-  }
+  // onChange(reminder, event) {
+  //   if (event.target.checked) {
+  //     this.checkedReminders.push(reminder);
+  //   }
+  //   else if (!event.target.checked) {
+  //     const index = this.checkedReminders.findIndex(rem => rem.Id === reminder.reminderId);
+  //     this.checkedReminders.splice(index, 1);
+  //   }
+  // }
 }

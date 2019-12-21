@@ -21,7 +21,7 @@ namespace NoteService.Models
         public string Status { get; set; }
         public DateTime CreationDate { get; set; }
         public Category Category { get; set; }
-        public List<Reminder> Reminders { get; set; }
+        public Reminder Reminders { get; set; }
         public string CreatedBy { get; set; }
 
 

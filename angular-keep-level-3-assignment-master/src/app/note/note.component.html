@@ -14,14 +14,15 @@
         <mat-card-content>Text: {{note.content}}</mat-card-content>
         <mat-card-content>Status: {{note.status}}</mat-card-content>
         <mat-card-content  class="category" >Category: {{note.category?.name}}</mat-card-content>
-        <div *ngIf="note.reminders"></div>
+        <mat-card-content  class="category" >Reminder: {{note.reminders?.name}}</mat-card-content>
+        <!-- <div *ngIf="note.reminders"></div>
         <mat-card-content *ngIf=note.reminders> 
             <b>Reminder : </b>
         </mat-card-content>
         <div class="reminder" *ngFor="let reminder of note.reminders">
                 &nbsp;<span class=""></span> 
                 <mat-card-content>{{reminder.name}}</mat-card-content>
-        </div>
+        </div> -->
     </div>  
     
     <!-- <span class="glyphicon glyphicon-trash " (click)="deleteNote()"></span> -->

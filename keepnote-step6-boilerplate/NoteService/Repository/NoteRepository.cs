@@ -160,11 +160,11 @@ namespace NoteService.Repository
                     var noteexists = noteuserExists.Notes;
                     noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Title = note.Title;
                     noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Content = note.Content;
-
-                    if (note.Reminders != null)
-                    {
-                        noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Reminders = note.Reminders.Distinct().ToList();
-                    }
+                    noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Status = note.Status;
+                    //if (note.Reminders != null)
+                    //{
+                        noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Reminders = note.Reminders;
+                    //}
                     noteexists.FirstOrDefault(S => S.Id == noteId && S.CreatedBy == userId).Category = note.Category; ;
                     noteuserExists.Notes = noteexists;
                     var existingNotes = noteuserExists.Notes;

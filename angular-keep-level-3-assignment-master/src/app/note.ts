@@ -20,8 +20,8 @@
   Status: string;
     CreationDate: string;
     CreatedBy: string;
-    category: Category[];
-    Reminders: Reminder[];
+    category: Category;
+    Reminders: Reminder;
     
     constructor() {
       this.Title = '';
