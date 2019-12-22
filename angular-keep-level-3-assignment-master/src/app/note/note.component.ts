@@ -33,7 +33,7 @@ export class NoteComponent {
       //  debugger;
         this.noteService.getNoteById(noteId).subscribe(result => {
            result;
-         
+       
         })
 
 
@@ -45,6 +45,8 @@ export class NoteComponent {
         // const index = this.response.findIndex(note => note.id === this.note.Title);
         // this.notes.splice(index, 1);
         this.noteService.fetchNotesFromServer();
+        //this.noteService.getNotes();
+       /// location.reload();
           },
           (err)=>{
       

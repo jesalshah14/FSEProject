@@ -89,10 +89,11 @@ namespace NoteService.Repository
             {
 
                 var note = noteUser.Notes.FindAll(S => S.CreatedBy == userId);
-
-                if (note.Count() == 0)
+                //IF noteID not found.
+                var notedel = noteUser.Notes.FindAll(S => S.CreatedBy == userId && S.Id == noteId);
+                if (note.Count() == 0 || notedel.Count() == 0)
                 {
-                    return true;
+                    return false;
                 }
                 if (note.Count() > 1)
                 {

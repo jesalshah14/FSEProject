@@ -88,6 +88,7 @@ this.errMessage = '';
     else {
       this.notesService.addNote(this.note).subscribe(addnote => {
       this.notesService.fetchNotesFromServer();
+      
         this.errMessage ="";
       },
       

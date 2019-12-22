@@ -65,8 +65,8 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Sachin", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Sample Note",
                 CreatedBy = "Sachin",
-                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
-                Title = "Sample",
+                Reminders = new Reminder { Id = 201, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" },
+              Title = "Sample",
                 CreationDate = DateTime.Now
             };
             HttpRequestMessage request = new HttpRequestMessage();
@@ -93,7 +93,7 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Mukesh", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Note-1",
                 CreatedBy = "Mukesh",
-                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
+                Reminders = new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" },
                 Title = "Sample",
                 CreationDate = DateTime.Now
             };
@@ -140,7 +140,7 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Mukesh", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Note-1",
                 CreatedBy = "Mukesh",
-                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
+                Reminders =  new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email"  },
                 Title = "Sample",
                 CreationDate = DateTime.Now
             };
@@ -159,7 +159,7 @@ namespace Test.controller
         [Fact, TestPriority(6)]
         public async Task DeleteNoteShouldFail()
         {
-            string userId = "Sachin";
+            string userId = "Sachins";
             int noteId = 103;
             // The endpoint or route of the controller action.
             var httpResponse = await _client.DeleteAsync($"/api/notes/{userId}/{noteId}");

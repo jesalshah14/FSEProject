@@ -15,7 +15,7 @@ export class ListViewComponent implements OnInit {
   completedNotes: Array<Note>;
 
   constructor(private notesService: NotesService) { 
-
+   //// this.notesService.fetchNotesFromServer();
   }
 
   ngOnInit() {
@@ -39,15 +39,24 @@ export class ListViewComponent implements OnInit {
     this.notesService.getNotes().subscribe(res => {
 
       this.notes=res;
-debugger;
+////debugger;
      //console.log('hi'+JSON.stringify( this.notes));
-     const groupedNotes = this.groupby(res, 'status');
+     if(this.notes == null)
+     {
+      this.notes =[];
+     
+      this.notes.splice(0, 1);
+     }
+     else
+     {
+     const groupedNotes = this.groupby(this.notes, 'status');
       const started = groupedNotes['started'];
       const notstarted = groupedNotes['not-started'];
       const completed = groupedNotes['completed'];
       this.startedNotes = started != null ? started : [];
       this.notStartedNotes = notstarted != null ? notstarted : [];
       this.completedNotes = completed != null ? completed : [];
+     }
     }
     ,err=>{
       console.log('error');
@@ -63,6 +72,9 @@ debugger;
       }
       acc[key].push(obj);
       return acc;
+      
     }, {});
+    
   }
+  
 }
