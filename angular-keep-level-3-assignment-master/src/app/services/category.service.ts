@@ -65,10 +65,6 @@ export class CategoryService {
     ///debugger;
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
-    if(userId === null || bearerToken === null){
-      this.router.routeToLogin();
-    }
-     
     return this.httpClient.get<Array<Category>>(`${this.url}/${userId}`,
      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
       

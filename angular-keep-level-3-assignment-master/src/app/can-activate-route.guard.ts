@@ -3,25 +3,54 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Observable } from 'rxjs/Observable';
 import { RouterService } from './services/router.service';
 import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 
-// @Injectable()
-// ////export class CanActivateRouteGuard implements CanActivate {
+@Injectable()
+export class CanActivateRouteGuard implements CanActivate {
 
-//   constructor(private authService: AuthenticationService,
+    constructor(private authService: AuthenticationService,
+        private userService: UserService,
 
-//     private routeService: RouterService) { }
+        private routeService: RouterService) { }
 
-//   // canActivate(
-//   //   next: ActivatedRouteSnapshot,
-//   //   state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-//   //   const booleanPromise = this.authService.isUserAuthenticated(this.authService.getBearerToken());
+    canActivate(
+        next: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-//   //   return booleanPromise.then((authenticated) => {
-//   //     if (!authenticated) {
-//   //       console.log("authenticated");
-//   //       this.routeService.routeToLogin();
-//   //     }
-//   //     return authenticated;
-//   //   });
-//   // }
-// }
+            const bearerToken = this.authService.getBearerToken();
+            const userId = this.authService.getUserId();
+           
+        //return true;
+
+        // this.userService.isuservalid(bearerToken).then(data => {
+        //     debugger;
+        //     if  (data.status === 401) {
+        //         this.routeService.routeToLogin();
+        //     }
+
+        //         return data;
+        //     })
+        //     .catch(error=>{
+        //     console.log(" http://localhost:8084/api/User/null 401 (Unauthorized)"+error);
+        // })
+        // }
+
+        // const employeexist = !!this.userService.getUserById(next.paramMap.get('userId'));
+        // if (employeexist) {
+        //     return true;
+        //     console.log("canActivate" + true);
+        // }
+        // else {
+        //     this.routeService.routeToLogin();
+        //     return false;
+        // }
+
+
+        if(userId === null || bearerToken === null){
+            this.routeService.routeToLogin();
+          }
+        else{
+            return true;
+        }
+    }
+}

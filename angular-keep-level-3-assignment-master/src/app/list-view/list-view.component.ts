@@ -39,13 +39,11 @@ export class ListViewComponent implements OnInit {
     this.notesService.getNotes().subscribe(res => {
 
       this.notes=res;
-////debugger;
+        ////debugger;
      //console.log('hi'+JSON.stringify( this.notes));
      if(this.notes == null)
      {
       this.notes =[];
-     
-      this.notes.splice(0, 1);
      }
      else
      {

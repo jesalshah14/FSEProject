@@ -25,10 +25,6 @@ export class NotesService {
   fetchNotesFromServer() {
    const  bearerToken= this.authService.getBearerToken();
     const userId = this.authService.getUserId();
-    if (userId === null || bearerToken === null) {
-      
-      this.router.routeToLogin();
-    }
     this.httpClient.get<Array<Note>>(`${this.url}/${userId}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)

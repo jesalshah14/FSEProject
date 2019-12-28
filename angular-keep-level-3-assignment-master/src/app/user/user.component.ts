@@ -40,13 +40,13 @@ export class UserComponent implements OnInit {
     });
   }
 
-  deleteUser() {
-    this.userService.deleteUser().subscribe(res => {
-      localStorage.removeItem("userId");
-      localStorage.removeItem("bearerToken");
-      this.routerService.routeToLogin();
-    })
-  }
+  // deleteUser() {
+  //   this.userService.deleteUser().subscribe(res => {
+  //     localStorage.removeItem("userId");
+  //     localStorage.removeItem("bearerToken");
+  //     this.routerService.routeToLogin();
+  //   })
+  // }
 
   updateUser() {
     this.useid = this.authService.getUserId();

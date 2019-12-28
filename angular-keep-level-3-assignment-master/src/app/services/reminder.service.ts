@@ -55,9 +55,6 @@ export class ReminderService {
    //debugger;
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
-    if(userId === null || bearerToken === null){
-      this.router.routeToLogin();
-    }
    // console.log('get reminder by user id'+userId);
     return this.httpClient.get<Array<Reminder>>(`${this.url}/${userId}`,
     { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }

@@ -5,14 +5,16 @@
     <mat-card-content>{{note.content}}</mat-card-content>
 
 </mat-card> -->
+<div class='container'>
+  <div class='row'>
 
-<div class="noteCard">
-    <mat-card class="cards" >
+<div class="col12 col-sm-6 col-md-3 col-lg-3">
+    <mat-card class="cards noteCard card-text">
             <!-- (click)="openEditNoteView(note.id)" -->
-     <div  >  
+     <div class>  
         <mat-card-title>Title: {{note.title}}</mat-card-title>
-        <mat-card-content>Text: {{note.content}}</mat-card-content>
-        <mat-card-content>Status: {{note.status}}</mat-card-content>
+        <mat-card-content  class="text">Text: {{note.content}}</mat-card-content>
+        <mat-card-content  class="text">Status: {{note.status}}</mat-card-content>
         <mat-card-content  class="category" >Category: {{note.category?.name}}</mat-card-content>
         <mat-card-content  class="category" >Reminder: {{note.reminders?.name}}</mat-card-content>
         <!-- <div *ngIf="note.reminders"></div>
@@ -23,7 +25,7 @@
                 &nbsp;<span class=""></span> 
                 <mat-card-content>{{reminder.name}}</mat-card-content>
         </div> -->
-    </div>  
+      
     
     <!-- <span class="glyphicon glyphicon-trash " (click)="deleteNote()"></span> -->
     <button class="delete" mat-button (click)="deleteNote(note.id)" title="Delete">
@@ -32,6 +34,10 @@
           <button class="edit" mat-button (click)="openEditView(note.id)" title="Edit">
             <mat-icon class="maticon">edit</mat-icon>
           </button>  
+        </div>
     </mat-card>
     
+</div>
+
+</div>
 </div>

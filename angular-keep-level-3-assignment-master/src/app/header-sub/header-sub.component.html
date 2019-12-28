@@ -43,11 +43,11 @@
 	<div class="keeptoggle-view">
 		<i *ngIf="isNoteView" class="material-icons switchToListView" (click) = "switchToListView()">view_list</i>
 		<i *ngIf="!isNoteView" class="material-icons switchToNoteView" (click) = "switchToNoteView()">view_quilt</i>
-	</div>
-
+	
 	<div class="profile"><a class="dropdown-item" (click)="routeToUserDetails()" 
 		title="Profile">{{UserName}}</a> &nbsp; 
 	<a class="logout" (click)="logoutUser()" title="Logout">Logout</a></div>
+</div>
 
 
 

@@ -1,8 +1,25 @@
 .keeptoggle-view{
 	width: 100%;
-	margin-left: 76%;
+	margin-left: 40%;
 	cursor: pointer;
-	margin-bottom: -12px;
+	margin-bottom: -30px;
+	display:flex;
+	justify-content: space-evenly;
+}
+
+
+.dropdown-item
+{
+	position: relative;
+	left: -40px;
+	top: -1px;
+}
+
+.logout {
+	cursor: pointer;
+	bottom: 36px;
+	position: relative;
+	left: 37px;
 }
 
 .logout, .profile{
@@ -13,6 +30,7 @@
 		margin: 0,2px,0,2px !important;
 		float: left;
 		padding-left: 2%;
+		margin-top: -5px;
     }
     
     .mat-toolbar.mat-primary {
@@ -28,4 +46,106 @@
 
 		}
 
-		
+
+/* Media Queries */
+/*etra small devices*/
+@media (max-width: 575px) {
+	.keeptoggle-view{
+		margin-left: 25%;
+   
+    margin-bottom: -40px;
+	}
+
+	.logout {
+    cursor: pointer;
+    bottom: 36px;
+    position: relative;
+    left: 70px;
+}
+	.dropdown-item {
+    position: relative;
+    left: -30%;
+    top: -1px;
+}
+ }
+/*small devices*/
+ @media (min-width: 576) and (max-width: 767px) {
+	.keeptoggle-view{
+		margin-left: 40%;
+   
+    margin-bottom: -33px;
+	}
+
+	.logout {
+    cursor: pointer;
+    bottom: 36px;
+    position: relative;
+    left: 40px !important;
+}
+	.dropdown-item {
+    position: relative;
+    left: -72px;
+    top: -1px;
+}
+ }
+/*medium devices*/
+ @media (min-width: 768px) and (max-width: 991px) {
+	.keeptoggle-view{
+		margin-left: 40%;
+   
+    margin-bottom: -33px;
+	}
+
+	.logout {
+    cursor: pointer;
+    bottom: 36px;
+    position: relative;
+    left: 50px;
+}
+	.dropdown-item {
+    position: relative;
+    left: -72px;
+    top: -1px;
+}
+ }
+ /*large devices*/
+ @media (min-width: 992px) and (max-width: 1199px) {
+	.keeptoggle-view{
+		margin-left: 55%;
+   
+    margin-bottom: -40px;
+	}
+
+	.logout {
+    cursor: pointer;
+    bottom: 36px;
+    position: relative;
+    left: 50px;
+}
+	.dropdown-item {
+    position: relative;
+    left: -72px;
+    top: -1px;
+}
+ }
+ /*Extra large devices*/
+ @media (min-width: 1200px) {
+	.keeptoggle-view{
+		margin-left: 65%;
+   
+    margin-bottom: -40px;
+	}
+
+	.logout {
+    cursor: pointer;
+    bottom: 36px;
+    position: relative;
+    left: 50px;
+}
+	.dropdown-item {
+    position: relative;
+    left: -72px;
+    top: -1px;
+}
+ }
+ 

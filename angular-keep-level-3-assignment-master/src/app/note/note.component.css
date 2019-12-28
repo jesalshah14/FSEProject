@@ -13,17 +13,10 @@
 
 .mat-card{
     padding:5px!important;
-
-    /* width:15vw; */
-    /* margin:10px;
-    margin-top: 20px; */
     border:1px solid gainsboro;
     border-radius: 0%;
-    /* display:flex;
-    flex-direction: column;
-    float: left; */
    background-color: #ccff90;
-   /* justify-content:space-around; */
+  width:260px;
 }
 .note-size{
     height:30vh;
@@ -31,17 +24,7 @@
     margin:1em;
 }
 
-.note-card{
-    min-width: 20vh;
-    min-height: 35vh;
-    margin:1em;
-    border-radius: .45rem;
-    
-   background-color: #ccff90;
-  }
-  .card-text, h3, mat-card-title, .category, .reminder {
-    font-family: 'Montserrat', sans-serif;
-}
+ 
 .reminder{
     color: rgb(228, 42, 9);
     font-size: 0.8em;
@@ -49,8 +32,10 @@
     bottom: 31px;
 
 }
+.text{
+  font-size: 15px;}
 .category{
-  font-size: 1em;
+  font-size: 15px;
   color:rgb(18, 14, 235);
 }
 

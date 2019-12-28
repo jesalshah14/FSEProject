@@ -29,11 +29,11 @@
     }
 
     .center{
-        width: 50%;
+   
         margin: 10px auto;
         }
 
-        
+  
 .form-header{
     text-align: center;
   }
@@ -56,6 +56,43 @@
     width: 35%;
     text-align: left;
   }
+
+/* Media Queries */
+/*etra small devices*/
+@media (max-width: 575px) {
+    .center{
+        width: 110%;
+     }
+ }
+/*small devices*/
+ @media (min-width: 576) and (max-width: 767px) {
+    .center{
+        width: 100%;
+     }
+ }
+/*medium devices*/
+ @media (min-width: 768px) and (max-width: 991px) {
+    .center{
+        width: 75%;
+     }
+ }
+ /*large devices*/
+ @media (min-width: 992px) and (max-width: 1199px) {
+    .center{
+        width: 60%;
+     }
+ }
+ /*Extra large devices*/
+ @media (min-width: 1200px) {
+    .center{
+        width: 60%;
+     }
+ }
+ 
+
+
+
+
 /* 
     form 
 {

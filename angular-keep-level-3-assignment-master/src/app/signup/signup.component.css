@@ -1,6 +1,6 @@
 .signup-form-container{
-    width:80vw;
-    margin:10vh auto;  
+    width:75vw;
+    margin:6vh auto;  
 }
 h2{
     text-align: center;
@@ -19,23 +19,26 @@ h2{
 .backlogin-css{
     text-align: end;
     position: relative;
-    right: 17.4em;
-    bottom: 25em;
+    right: 24em;
+    bottom: 5em;
 }
 
   .button-css{
-    background-color: rgb(9, 112, 216);
-    width: 11% !important;;
+    
     text-align: left;
-   
+    position: relative;
+    top: 78px;
+    left: 178px;
   }
+
+
 
   form 
 {
     border:1px solid navy;
     margin : auto;
     margin-top:30px;
-    width:40vw;
+   
     display: flex;
     flex-direction: column;
 }
@@ -47,11 +50,11 @@ form div {
 }
 
 form div label{
-    margin:10px;
+    margin:5px;
 }
 
 form div input{
-    width :70%
+    width :50%
 }
 
 form div input.submit{
@@ -63,3 +66,89 @@ form div input.submit{
     color :red;
     font-style:italic;
 }
+
+/* Media Queries */
+
+/*etra small devices*/
+@media (max-width: 575px) {
+    form div input.submit{
+        width: 30%;
+     }
+     form 
+        {
+            width:75vw;
+        }
+
+        .backlogin-css{
+            
+            position: relative;
+            right: 16em;
+            bottom: 5em;
+        }
+ }
+/*small devices*/
+ @media (min-width: 576) and (max-width: 767px) {
+    form div input.submit{
+        width: 32%;
+     }
+     form 
+     {
+         width:75vw;
+     }
+     .backlogin-css{
+            
+        position: relative;
+        right: 24em;
+        bottom: 5em;
+    }
+ }
+/*medium devices*/
+ @media (min-width: 768px) and (max-width: 991px) {
+    form div input.submit{
+        width: 20%;
+     }
+     form 
+     {
+         width:55vw;
+     }
+     .backlogin-css{
+            
+        position: relative;
+        right: 27em;
+        bottom: 5em;
+    }
+ }
+ /*large devices*/
+ @media (min-width: 992px) and (max-width: 1199px) {
+    form div input.submit{
+        width: 20%;
+     }
+     form 
+     {
+         width:35vw;
+     }
+     .backlogin-css{
+            
+        position: relative;
+        right: 34em;
+        bottom: 5em;
+    }
+
+ }
+ /*Extra large devices*/
+ @media (min-width: 1200px) {
+    form div input.submit{
+        width: 20%;
+     }
+     form 
+     {
+         width:35vw;
+     }
+     .backlogin-css{
+            
+        position: relative;
+        right:39em;
+        bottom: 5em;
+    }
+     
+ }

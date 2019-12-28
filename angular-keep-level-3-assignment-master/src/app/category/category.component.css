@@ -13,20 +13,21 @@
     margin-left:2%
   }
 .cards-layout{
- 
-  
-  width:15vw;
-  margin:10px;
+
+  width: 275px;
+
   margin-top: 20px;
   border:1px solid gainsboro;
- 
-  /* display:flex;
-  flex-direction: column; */
+   display:flex;
+  flex-direction: column; 
   
  background-color: gainsboro;
- justify-content:space-around;
+ /* justify-content:space-around; */
 
 }
+
+
+
   .category-expansion-panel {
     width: 30vw;
     margin: auto;

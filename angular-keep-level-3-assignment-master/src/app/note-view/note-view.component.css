@@ -1,19 +1,25 @@
+
 .noteCardContainer{
-    display: flex;
-    margin:5.5em;
-    flex-wrap: wrap;
+  display: flex;
+  margin:1em;
+  flex-wrap: wrap;
 }
 
 
 .formSearch{
-  position: absolute;
-  /* top: -6em; */
-  left: 64em;
-  top: 5em;
+position: absolute;
+/* top: -6em;*/
+left: 1em;
+top: 4em;
 }
 
 .icon{
-  position: relative;
-  right: -9em;
-  top: -22px;
+position: relative;
+right: -9em;
+top: -22px;
+
 }
+
+
+
+  

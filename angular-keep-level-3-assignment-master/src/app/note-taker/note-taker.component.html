@@ -6,7 +6,7 @@
     <mat-expansion-panel>
         
         <mat-expansion-panel-header>
-            <h4><mat-panel-title>Take a note</mat-panel-title></h4>
+            <b><mat-panel-title>Take a note</mat-panel-title></b>
         </mat-expansion-panel-header>
 
         <!-- <div class='noteInputs'>
@@ -32,8 +32,8 @@
                     <textarea matInput placeholder="Enter Note Content" name="content" formControlName="content"></textarea>
                 </mat-form-field>
                 <br>
-                <mat-form-field>
-                    <mat-select placeholder="Select category" formControlName="category" name="category">
+                <mat-form-field  class="noteInputsfields">
+                    <mat-select placeholder="Select Category" formControlName="category" name="category">
                         <mat-option *ngFor="let category of categories" [value]="category">
                             {{category.name}}
                         </mat-option>
@@ -41,8 +41,8 @@
                 </mat-form-field>
                 <br>
                 <br>
-                <mat-form-field>
-                    <mat-select placeholder="Select reminder" formControlName="Reminders" name="Reminders">
+                <mat-form-field class="noteInputsfields">
+                    <mat-select placeholder="Select Reminder" formControlName="Reminders" name="Reminders">
                         <mat-option *ngFor="let reminder of Reminders" [value]="reminder">
                             {{reminder.name}}
                         </mat-option>
@@ -65,9 +65,9 @@
 
 
 
+<!-- Label to display any error messages -->
+<label class="error-message">{{ errMessage }}</label>
+
     </mat-expansion-panel>
 </mat-accordion>
 </div>
-
-<!-- Label to display any error messages -->
-<label class="error-message">{{ errMessage }}</label>

@@ -5,7 +5,7 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-              <h4>Category</h4>
+              <h5>Category</h5>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <div>
@@ -36,10 +36,11 @@
       <div class="category-box">
       
       
-      <div class="keep-c-list-container">
-        <div class="card col-12 ">
+      <div class="container">
+        <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <mat-card class="cards-layout">
-       
+       <div>
              <mat-card-content ><!--(click)="routeToNotes(category.id)" -->
               Category Name: {{category.name}}<br> Category Descriptiion: {{category.description}}
             </mat-card-content>
@@ -50,9 +51,10 @@
             <button class="edit" mat-button (click)="updateCategory(category.id)" title="Edit">
               <mat-icon class="maticon">edit</mat-icon>
             </button>
-      
+          </div>
           </mat-card>
         </div>
+      </div>
       </div>
       </div>
       </div>

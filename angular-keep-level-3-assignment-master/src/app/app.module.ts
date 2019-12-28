@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatIconModule}from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
@@ -37,43 +37,42 @@ import { EditCategoryOpenerComponent } from './edit-category-opener/edit-categor
 import { CategoryService } from './services/category.service';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 //import { CanActivateRouteGuard } from './can-activate-route.guard';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { ReminderComponent } from './reminder/reminder.component';
 import { ReminderViewComponent } from './reminder-view/reminder-view.component';
 import { EditReminderOpenerComponent } from './edit-reminder-opener/edit-reminder-opener.component';
 import { ReminderService } from './services/reminder.service';
+import { CanActivateRouteGuard } from './can-activate-route.guard';
 
 const appRoute: Routes = [
   {
-    path:'',//http://localhost:4200/
+    path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path:'login',//http://localhost:4200/login
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   { path: 'signup', component: SignupComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'user/edit/:userId', component: EditUserViewComponent },
   {
-    path: 'category', component: CategoryComponent,
+    path: 'category', component: CategoryComponent, canActivate: [CanActivateRouteGuard],
     children: [{
       path: 'category/:categoryId/edit', component: EditCategoryOpenerComponent, outlet: 'categoryEditOutlet'
     }
-   ]
+    ]
   },
   {
-    path: 'reminder', component: ReminderComponent,
+    path: 'reminder', component: ReminderComponent, canActivate: [CanActivateRouteGuard],
     children: [{
       path: 'reminder/:reminderId/edit', component: EditReminderOpenerComponent, outlet: 'reminderEditOutlet'
     }
-   ]
+    ]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    ///canActivate: [CanActivateRouteGuard],
+    canActivate: [CanActivateRouteGuard],
     children: [
       {
         path: '',
@@ -94,7 +93,9 @@ const appRoute: Routes = [
         outlet: 'noteEditOutlet'
       }
     ]
-  }
+  },
+  { path: 'user', component: UserComponent, canActivate: [CanActivateRouteGuard] },
+  { path: 'user/edit/:userId', component: EditUserViewComponent, canActivate: [CanActivateRouteGuard] }
 ];
 
 @NgModule({
@@ -136,13 +137,13 @@ const appRoute: Routes = [
     MatDialogModule,
     MatIconModule,
     MatMenuModule,
-    
+
     MatDividerModule
   ],
   providers: [
     AuthenticationService,
     RouterService,
-   // CanActivateRouteGuard,
+    CanActivateRouteGuard,
     NotesService,
     UserService,
     CategoryService,
