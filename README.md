@@ -2,16 +2,16 @@
 
 ### Project Objective
 
-    The objective of this project is to create a Keep Note Application which helps users to take notes of different categories & reminder
-    for each note. 
+    The objective of this project is to create a Keep Note Application which helps users 
+    to take notes of different categories & reminder for each note. 
 
 ### Application Overview
 
     1. A user will have to login first or register. 
     2. A user should be able to register him/herself by providing required details.  
     3. A user can perform crud on notes. A note can be associated with a particular category & reminders.
-    4. Note has two views card & list. In list view notes are categorised based on their states not-started,started & completed. 
-       Category & Reminder have only card view. 
+    4. Note has two views card & list. In list view notes are categorised based on their states
+       not-started,started & completed.Category & Reminder have only card view. 
     5. A user can perform crud on categories. 
     6. A user can perform crud on reminders.  
     7. A user can also view his profile & edit it.
