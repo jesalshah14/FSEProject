@@ -64,17 +64,26 @@
     
     To run the backend with Swagger API DOCS
     
+<<<<<<< HEAD
             1. AuthenticationService  :: http://localhost:8085/swagger/index.html
             2. UserService            :: http://localhost:8084/swagger/index.html
             3. NoteService            :: http://localhost:8082/swagger/index.html
             4. CategoryService        :: http://localhost:8081/swagger/index.html
             5. ReminderService        :: http://localhost:8083/swagger/index.html
+=======
+            1. AuthenticationService  ::
+            2. UserService            ::
+            3. NoteService            ::
+            4. CategoryService        ::
+            5. ReminderService        ::
+>>>>>>> 6d6ac52d44f01bff7003b8e4c765ad860616d115
 
 
 ###  API Urls for backend Microservices & services provided.
 
     API Urls for backend Microservices
 
+<<<<<<< HEAD
             1. AuthenticationService  
                   Register        :: POST :: http://localhost:8085/api/auth/register
                   Login           :: POST :: http://localhost:8085/api/auth/login
@@ -122,6 +131,31 @@
 
 
 
+=======
+            1. AuthenticationService  ::
+            2. UserService            ::
+            3. NoteService            ::
+            4. CategoryService        ::
+            5. ReminderService        ::
+
+ 
+
+| **Services Provided** |  |  | 
+| ----------| ------------ | --------------------------- | 
+| KeepNote-ui | Microservice | Angular 6 |
+| AuthenticationService |  Microservice | ASP.NeT CORE, JWT |
+| NoteService |  Microservice | ASP.NeT CORE, JWT |
+| CategoryService |  Microservice |  ASP.NeT CORE, JWT |
+| ReminderService |  Microservice |  ASP.NeT CORE, JWT |
+| UserService| Micro service | ASP.NeT CORE, JWT |
+| Container | Hosting and orchestration | Docer, Docker Compose |
+| Datastore | MongoDB | NoSQL  | 
+| Datastore | RDBMS | MySQL  | 
+
+
+
+
+>>>>>>> 6d6ac52d44f01bff7003b8e4c765ad860616d115
 
 
 
