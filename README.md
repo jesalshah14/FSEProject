@@ -1,6 +1,6 @@
 ## Keep Note Final Assignment 
 
-###  Project Objective
+###  Project 
 
 In this case study Keep Note Step 6, we will implement JWT (JSON Web Token) on top of Keep Note Step 5 Assignment. JSON Web Token (JWT) is an open standard (RFC 7519) that 
 defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is
