@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RouterService } from '../services/router.service';
 import { ReminderService } from '../services/reminder.service';
 import { FormControl } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-reminder-view',
@@ -17,34 +18,35 @@ export class ReminderViewComponent implements OnInit {
   name = new FormControl('');
   description = new FormControl('');
   type = new FormControl('');
-  constructor(private dialog: MatDialogRef<ReminderViewComponent>, 
+  constructor(private dialog: MatDialogRef<ReminderViewComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private reminderService: ReminderService,private routerService:RouterService) {
+    private reminderService: ReminderService, private routerService: RouterService,
+    private authservice: AuthenticationService) {
     this.reminder = this.data;
-   // console.log( this.reminder);
+    // console.log( this.reminder);
   }
 
   onSave(Id) {
     if (this.name.hasError('required') || this.description.hasError('required'
-    )|| this.type.hasError('required')){
+    ) || this.type.hasError('required')) {
       this.errMessage = 'name and description required !';
     }
     else {
-    this.reminderService.updateReminder(Id,this.reminder).subscribe(res => {
-      this.reminderService.getAllRemindersByUserId();
-      
-    this.dialog.close();
-    },(error) => {
-      if (error.status === 404) {
-        this.errMessage = 'reminderId  not found';
-      }
-      else
-      {
-        console.log(error);
-        this.errMessage = error.message;
-      }
-    });
-  }
+      this.reminderService.updateReminder(Id, this.reminder).subscribe(res => {
+        this.reminderService.getAllRemindersByUserId();
+
+        this.dialog.close();
+      }, (error) => {
+        if (error.status === 404) {
+          this.errMessage = 'reminderId  not found';
+        }
+        else {
+         
+          console.log(error);
+          this.errMessage = error.message;
+        }
+      });
+    }
   }
 
   ngOnInit() {

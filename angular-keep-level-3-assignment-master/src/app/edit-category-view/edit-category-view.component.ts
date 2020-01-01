@@ -25,33 +25,27 @@ export class EditCategoryViewComponent implements OnInit {
   }
 
   onSave(categoryId) {
-    //console.log('updated category'+categoryId)
 
-    // if(this.name.value == null  || this.description.value == null 
-    //  || this.name.value == ''  || this.description.value == '' ){
-  if (this.name.hasError('required') || this.description.hasError('required')){
-    this.errMessage = 'name and description required !';
-  } else {
+    if (this.name.hasError('required') || this.description.hasError('required')) {
+      this.errMessage = 'name and description required !';
+    } else {
 
+      this.categoryService.updateCategory(categoryId, this.category).subscribe(res => {
+        console.log('updated category' + res)
+        this.categoryService.getAllCategoryByUserId();
+        this.dialog.close();
+      },
+        (error) => {
 
-    
-    this.categoryService.updateCategory(categoryId,this.category).subscribe(res => {
-     console.log('updated category'+res)
-     this.categoryService.getAllCategoryByUserId();
-      this.dialog.close();
-    },
-    (error) => {
-      
-     if (error.status === 404) {
-       this.errMessage = 'categoryId  not found';
-     }
-     else
-     {
-       console.log(error);
-       this.errMessage = error.message;
-     }
-   });
+          if (error.status === 404) {
+            this.errMessage = 'categoryId  not found';
+          }
+          else {
+            console.log(error);
+            this.errMessage = error.message;
+          }
+        });
+    }
+
   }
-
-}
 }

@@ -90,6 +90,7 @@ const appRoute: Routes = [
         path: 'note/:noteId/edit',
         component: EditNoteOpenerComponent,
         outlet: 'noteEditOutlet'
+        
       }
     ]
   },

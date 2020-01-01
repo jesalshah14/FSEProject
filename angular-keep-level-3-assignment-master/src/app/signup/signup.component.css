@@ -62,9 +62,17 @@ form div input.submit{
     margin-left: auto;
 }
 
-.small,small{
+small{
     color :red;
     font-style:italic;
+
+}
+
+.smalls{
+    color :red;
+    font-style:italic;
+    position: relative;
+    left: 22em;
 }
 
 /* Media Queries */

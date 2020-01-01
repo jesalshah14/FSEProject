@@ -9,68 +9,38 @@ import { NotesService } from '../services/notes.service';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent {
-  
-// data inputed 
+
+  // data inputed 
   @Input() note: Note;
-  
-  constructor(private routerService: RouterService, private noteService:NotesService) { 
+
+  constructor(private routerService: RouterService, private noteService: NotesService) {
 
   }
-  
-  ngOnInit() {
-    //console.log('oninit-'+JSON.stringify(this.note));
-  
 
-      }
-    
-      openEditView(noteId:number) {
-        
-         
-        this.routerService.routeToEditNoteView(noteId);
-      }
-    
-      deleteNote(noteId:number) {
-      //  debugger;
-        this.noteService.getNoteById(noteId).subscribe(result => {
-           result;
-       
-        })
+  ngOnInit() { }
 
+  openEditView(noteId: number) {
+    this.routerService.routeToEditNoteView(noteId);
+  }
 
-    //console.log(noteId+'-'+JSON.stringify(this.note));
-        this.noteService.deleteNote(noteId).subscribe(response => {
-        console.log(response)
-
-
-        // const index = this.response.findIndex(note => note.id === this.note.Title);
-        // this.notes.splice(index, 1);
-        this.noteService.fetchNotesFromServer();
-        //this.noteService.getNotes();
-       /// location.reload();
-          },
-          (err)=>{
-      
-           /// debugger;
-            if (err.status === 404) {
-            console.log('Note id not found!');
-            }
-          else {
-            console.log('Session expired please login again!');
-            }
-          });
-         /// this.routerService.r();
+  deleteNote(noteId: number) {
+    this.noteService.getNoteById(noteId).subscribe(result => {
+      result;
+    })
+    this.noteService.deleteNote(noteId).subscribe(response => {
+      console.log(response)
+      this.noteService.fetchNotesFromServer();
+      //this.noteService.getNotes();
+      /// location.reload();
+    },
+      (err) => {
+     
+        if (err.status === 404) {
+          console.log('Note id not found!');
         }
-
-
-
-      
-      // openNoteReminderView(){
-      //   this.routerService.routeToAddReminderView(this.note.Id);
-      // }
+        else {
+          console.log('Session expired please login again!');
+        }
+      });
     }
-    
-
-//   openEditView() {
-//     this.routerService.routeToEditNoteView(this.note.Id);
-//   }
-// }
+  }

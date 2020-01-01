@@ -6,37 +6,36 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-        <h5>Reminder</h5>
+          <h5>Reminder</h5>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-          <!-- //(ngSubmit)="createCategory()" -->
-        <form action="" >
+        <!-- //(ngSubmit)="createCategory()" -->
+        <form action="">
           <mat-form-field class="matinput">
 
             <input matInput placeholder="reminder name" name="name" [formControl]="name">
             <mat-error *ngIf="name.invalid && (name.touched || name.dirty)"><i>
-              Reminder name is Required</i></mat-error>
+                Reminder name is Required</i></mat-error>
           </mat-form-field>
           <br>
 
           <mat-form-field class="matinput">
-            <textarea matInput placeholder="reminder description" name="description" 
-            [formControl]="description"></textarea>
+            <textarea matInput placeholder="reminder description" name="description"
+              [formControl]="description"></textarea>
             <mat-error *ngIf="description.invalid && (description.touched || description.dirty)">
-                <i>Reminder description is
-              Required</i></mat-error>
+              <i>Reminder description is
+                Required</i></mat-error>
           </mat-form-field><br>
 
           <mat-form-field class="matinput">
-            <textarea matInput placeholder="reminder type" name="type" 
-            [formControl]="type"></textarea>
+            <textarea matInput placeholder="reminder type" name="type" [formControl]="type"></textarea>
             <mat-error *ngIf="type.invalid && (type.touched || type.dirty)">
-                <i>Reminder type is
-              Required</i></mat-error>
+              <i>Reminder type is
+                Required</i></mat-error>
           </mat-form-field><br>
 
-          <button mat-raised-button color="primary" class="button-css"(click)="createReminder()">Save</button>
+          <button mat-raised-button color="primary" class="button-css" (click)="createReminder()">Save</button>
         </form>
       </div>
     </mat-expansion-panel>
@@ -44,33 +43,34 @@
 </div>
 
 
-<br/>
-<div  *ngFor="let reminder of reminderArr">
-<div class="category-box">
+<br />
+<div *ngFor="let reminder of reminderArr">
+  <div class="category-box">
 
 
-<div class="container">
-  <div class="row">
-  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-    <mat-card class="cards-layout">
- 
-       <mat-card-content ><!--(click)="routeToNotes(category.id)" -->
-        Reminder Name: {{reminder.name}}<br/> Reminder Descriptiion: {{reminder.description}}
-        <br/> Reminder Type: {{reminder.type}}
-      </mat-card-content>
-       
-      <button class="delete" mat-button (click)="deleteReminder(reminder.id)" title="Delete">
-        <mat-icon class="maticon">delete</mat-icon>
-      </button>
-      <button class="edit" mat-button (click)="updateReminder(reminder.id)" title="Edit">
-        <mat-icon class="maticon">edit</mat-icon>
-      </button>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <mat-card class="cards-layout">
 
-    </mat-card>
+            <mat-card-content>
+              <!--(click)="routeToNotes(category.id)" -->
+              Reminder Name: {{reminder.name}}<br /> Reminder Descriptiion: {{reminder.description}}
+              <br /> Reminder Type: {{reminder.type}}
+            </mat-card-content>
+
+            <button class="delete" mat-button (click)="deleteReminder(reminder.id)" title="Delete">
+              <mat-icon class="maticon">delete</mat-icon>
+            </button>
+            <button class="edit" mat-button (click)="updateReminder(reminder.id)" title="Edit">
+              <mat-icon class="maticon">edit</mat-icon>
+            </button>
+
+          </mat-card>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 <router-outlet name="reminderEditOutlet"></router-outlet>
 <router-outlet></router-outlet>

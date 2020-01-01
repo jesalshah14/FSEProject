@@ -37,7 +37,7 @@ namespace NoteService
             {
                 c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             });
-            //Implement token validation logic
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<NoteContext>();
             services.AddScoped<INoteRepository, NoteRepository>();
@@ -91,6 +91,9 @@ namespace NoteService
             app.UseCors("Origin");
             app.UseMvc();
         }
+
+
+        //Implement token validation logic
         private void ValidateToken(IConfiguration configuration, IServiceCollection services)
         {
             var audienceConfig = configuration.GetSection("Audience");

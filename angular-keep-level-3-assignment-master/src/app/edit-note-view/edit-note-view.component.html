@@ -1,51 +1,46 @@
 <!-- Label to display any error messages -->
 
 <div class="noteInputs">
-  
-    <!-- Title -->
-<mat-form-field> 
-  <input [(ngModel)]="note.title" name="editTitle" matInput placeholder="Enter Note Title" type="text">
-</mat-form-field>
+
+  <!-- Title -->
+  <mat-form-field>
+    <input [(ngModel)]="note.title" name="editTitle" matInput placeholder="Enter Note Title" type="text">
+  </mat-form-field>
   <!-- Text -->
-<mat-form-field>
-  <textarea [(ngModel)]="note.content" name="editText" matInput placeholder="Enter Note Content"></textarea>
-</mat-form-field>
-<mat-form-field>
-    <mat-select [(ngModel)]="note.status" name="editStatus" placeholder="Select status" >
-        <mat-option *ngFor="let state of status" [value]="state">
-          {{ state }} 
-        </mat-option>
-      </mat-select>
-</mat-form-field>
-<mat-form-field>
-  <!-- <label>category</label> -->
-  <mat-select  [(ngModel)]="note.category" name="category" placeholder="Select category: {{note.category?.name}}">
+  <mat-form-field>
+    <textarea [(ngModel)]="note.content" name="editText" matInput placeholder="Enter Note Content"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="note.status" name="editStatus" placeholder="Select status">
+      <mat-option *ngFor="let state of status" [value]="state">
+        {{ state }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <!-- <label>category</label> -->
+    <mat-select [(ngModel)]="note.category" name="category" placeholder="Select category: {{note.category?.name}}">
       <mat-option *ngFor="let category of categories" [value]="category">
         {{category?.name}}
       </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<br>
-<mat-form-field>
-    <!-- <label>category</label> -->
-    <mat-select  [(ngModel)]="note.reminders" name="reminder" placeholder="Select reminder: {{note.reminders?.name}}">
-        <mat-option *ngFor="let reminder of reminders" [value]="reminder">
-          {{reminder?.name}}
-        </mat-option>
     </mat-select>
   </mat-form-field>
 
-
+  <br>
+  <mat-form-field>
+    <mat-select [(ngModel)]="note.reminders" name="reminder" placeholder="Select reminder: {{note.reminders?.name}}">
+      <mat-option *ngFor="let reminder of reminders" [value]="reminder">
+        {{reminder?.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
 </div>
 <div class="keep-c-done-wrapper noteSubmit">
-  
+
   <!-- button -->
-  <button mat-raised-button (click)="onSave(note.id)"  color="primary">Save</button>
+  <button mat-raised-button (click)="onSave(note.id)" color="primary">Save</button>
 </div>
 <label class="error-message">{{ errMessage }}</label>
 <br>
-<label class="error-message">{{ errMessage1 }}</label>
-
-
+<label class="error-message1">{{ errMessage1 }}</label>

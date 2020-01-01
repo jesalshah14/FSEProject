@@ -15,22 +15,10 @@ export class ListViewComponent implements OnInit {
   completedNotes: Array<Note>;
 
   constructor(private notesService: NotesService) { 
-   //// this.notesService.fetchNotesFromServer();
   }
 
   ngOnInit() {
     this.getData();
-    // this.notesService.getNotes().subscribe(
-    //   Notes => {
-    //     this.notStartedNotes = Notes.filter(note => ('not-started' === note.Status));
-    //     this.startedNotes = Notes.filter(note => ('started' === note.Status));
-    //     this.completedNotes = Notes.filter(note => ('completed' === note.Status));
-    //   },
-    //   (err) => { }
-    // );
-
-   
-
   }
 
   getData() {
@@ -39,7 +27,7 @@ export class ListViewComponent implements OnInit {
     this.notesService.getNotes().subscribe(res => {
 
       this.notes=res;
-        ////debugger;
+  
      //console.log('hi'+JSON.stringify( this.notes));
      if(this.notes == null)
      {

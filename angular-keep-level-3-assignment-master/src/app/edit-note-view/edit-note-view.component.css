@@ -14,3 +14,8 @@ justify-content: flex-end;
     font-style: italic;
     color:red;
 }
+
+.error-message1{
+    font-style: italic;
+    color:blueviolet;
+}

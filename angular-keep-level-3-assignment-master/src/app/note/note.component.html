@@ -1,43 +1,26 @@
-<!-- <mat-card class="noteCard" (click)='openEditView()'>
-
-    <mat-card-title>{{note.title}}</mat-card-title>
-
-    <mat-card-content>{{note.content}}</mat-card-content>
-
-</mat-card> -->
 <div class='container'>
   <div class='row'>
 
-<div class="col12 col-sm-6 col-md-3 col-lg-3">
-    <mat-card class="cards noteCard card-text">
-            <!-- (click)="openEditNoteView(note.id)" -->
-     <div class>  
-        <mat-card-title>Title: {{note.title}}</mat-card-title>
-        <mat-card-content  class="text">Text: {{note.content}}</mat-card-content>
-        <mat-card-content  class="text">Status: {{note.status}}</mat-card-content>
-        <mat-card-content  class="category" >Category: {{note.category?.name}}</mat-card-content>
-        <mat-card-content  class="category" >Reminder: {{note.reminders?.name}}</mat-card-content>
-        <!-- <div *ngIf="note.reminders"></div>
-        <mat-card-content *ngIf=note.reminders> 
-            <b>Reminder : </b>
-        </mat-card-content>
-        <div class="reminder" *ngFor="let reminder of note.reminders">
-                &nbsp;<span class=""></span> 
-                <mat-card-content>{{reminder.name}}</mat-card-content>
-        </div> -->
-      
-    
-    <!-- <span class="glyphicon glyphicon-trash " (click)="deleteNote()"></span> -->
-    <button class="delete" mat-button (click)="deleteNote(note.id)" title="Delete">
+    <div class="col12 col-sm-6 col-md-3 col-lg-3">
+      <mat-card class="cards noteCard card-text">
+        <!-- (click)="openEditNoteView(note.id)" -->
+        <div class>
+          <mat-card-title>Title: {{note.title}}</mat-card-title>
+          <mat-card-content class="text">Text: {{note.content}}</mat-card-content>
+          <mat-card-content class="text">Status: {{note.status}}</mat-card-content>
+          <mat-card-content class="category">Category: {{note.category?.name}}</mat-card-content>
+          <mat-card-content class="category">Reminder: {{note.reminders?.name}}</mat-card-content>
+
+          <button class="delete" mat-button (click)="deleteNote(note.id)" title="Delete">
             <mat-icon class="maticon">delete</mat-icon>
           </button> |
           <button class="edit" mat-button (click)="openEditView(note.id)" title="Edit">
             <mat-icon class="maticon">edit</mat-icon>
-          </button>  
+          </button>
         </div>
-    </mat-card>
-    
-</div>
+      </mat-card>
 
-</div>
+    </div>
+
+  </div>
 </div>

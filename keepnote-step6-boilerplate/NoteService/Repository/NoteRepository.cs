@@ -114,15 +114,7 @@ namespace NoteService.Repository
                 }
                 else
                 {
-                    // note.RemoveAll(S => S.Id == noteId && S.CreatedBy == userId);
-
-
-                    //var filter = Builders<NoteUser>.Filter.Where(C => C.UserId == userId);
-                    //var update = Builders<NoteUser>.Update.Set(S => S.Notes, note);
-                    //var updateResult = context.Notes.UpdateOne(filter, update);
-                    //status = updateResult.IsAcknowledged == true ? true : false;
-
-
+                  
                     var delCount = context.Notes.DeleteOne(S => S.UserId == userId);
                     status = delCount.IsAcknowledged ? true : false;
 

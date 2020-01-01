@@ -33,11 +33,12 @@ namespace UserService
             {
                 c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             });
-            //Implement token validation logic
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<UserContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, Service.UserService>();
+            //Implement token validation logic
             ValidateToken(Configuration, services);
 
             //configuring swagger
@@ -94,7 +95,7 @@ namespace UserService
             app.UseCors("Origin");
             app.UseMvc();
         }
-        //Validate Token
+        //Validate Token 
         private void ValidateToken(IConfiguration configuration, IServiceCollection services)
         {
             var audienceConfig = configuration.GetSection("Audience");

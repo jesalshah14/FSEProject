@@ -98,10 +98,9 @@ namespace AuthenticationService.Controllers
             }
         }
 
+        //genrate token 
         private string GetToken(string userId)
         {
-
-
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName,userId),

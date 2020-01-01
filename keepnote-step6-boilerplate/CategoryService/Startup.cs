@@ -33,11 +33,12 @@ namespace CategoryService
             {
                 c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             });
-            //Implement token validation logic
+          
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<CategoryContext>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, Service.CategoryService>();
+            //validate token
             ValidateToken(Configuration, services);
 
             //configuring swagger
@@ -70,7 +71,7 @@ namespace CategoryService
             });
         }
 
-
+        //Implement token validation logic
         private void ValidateToken(IConfiguration configuration, IServiceCollection services)
         {
             var audienceConfig = configuration.GetSection("Audience");
@@ -108,7 +109,7 @@ namespace CategoryService
             {
                 app.UseDeveloperExceptionPage();
             }
-            //adding authentication
+            //adding authentication for securing api
             app.UseAuthentication();
 
 

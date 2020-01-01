@@ -107,15 +107,15 @@
 
  
 
-| **Services Provided** |  |  | 
+| **Services Provided** | **Platform** | **Framework** | 
 | ----------| ------------ | --------------------------- | 
-| KeepNote-ui | Microservice | Angular 6 |
+| KeepNote-ui | Microservice | Angular 7 |
 | AuthenticationService |  Microservice | ASP.NeT CORE, JWT |
 | NoteService |  Microservice | ASP.NeT CORE, JWT |
 | CategoryService |  Microservice |  ASP.NeT CORE, JWT |
 | ReminderService |  Microservice |  ASP.NeT CORE, JWT |
 | UserService| Micro service | ASP.NeT CORE, JWT |
-| Container | Hosting and orchestration | Docer, Docker Compose |
+| Container | Hosting | Docker, Docker Compose |
 | Datastore | MongoDB | NoSQL  | 
 | Datastore | RDBMS | MySQL  | 
 

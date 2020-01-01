@@ -55,7 +55,7 @@ namespace AuthenticationService
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
 
-            //configuring swagger
+            //configuring swagger doc specfication
             services.AddSwaggerGen(s =>
 
                 s.SwaggerDoc("authapidoc", new Info
@@ -85,6 +85,7 @@ namespace AuthenticationService
 
             });
             app.UseCors("Origin");
+            //mw for route configuration
             app.UseMvc();
         }
     }

@@ -20,7 +20,7 @@ export class EditReminderOpenerComponent implements OnInit {
 
     this.activateRoute.params.subscribe(param => this.Id = param.reminderId);
     this.reminderService.getReminderById(this.Id).subscribe(res => {
-    ///  debugger;
+      ///  debugger;
       this.reminder = res;
       this.matdialog.open(ReminderViewComponent, {
         data: this.reminder

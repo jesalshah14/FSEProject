@@ -5,17 +5,9 @@
 
 
 <!-- Notes reader panel -->
-<div class="noteCardContainer justify-content-start">
+<div class="noteCardContainer justify-content-center">
 	<!-- JESAL -->
 	<!-- Include the notes collection with each note rendered as a separate NoteComponent -->
 	<app-note [note]="note" *ngFor="let note of filternotes"></app-note>
-	<!-- <mat-card class="noteCard" *ngFor="let mynote of notes">
-			   <mat-card-title>
-				 
-				   {{mynote.title}}
-			   </mat-card-title>
-			   <mat-card-content>
-					   {{mynote.text}}
-			   </mat-card-content>
-		   </mat-card> -->
+
 </div>

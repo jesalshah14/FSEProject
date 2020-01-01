@@ -13,33 +13,30 @@ import { User } from '../user';
 export class EditUserViewComponent implements OnInit {
 
   private user: User;
-  private username:string;
+  private username: string;
   private userId: string;
   public submitMessage: string;
-  constructor(private activatedRoute: ActivatedRoute, 
+  constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private routerService: RouterService,
     private authService: AuthenticationService) {
-      this.user = new User();
+    this.user = new User();
 
-      console.log("ddd"+ this.userId);
-    //   debugger;
-   //this.activatedRoute.params.subscribe(pass => this.userId = pass.userId);or from authservice
+    //this.activatedRoute.params.subscribe(pass => this.userId = pass.userId);or from authservice
     this.userService.getUserById(this.authService.getUserId()).subscribe(user => {
       this.user = user;
       //console.log(this.user);
     },
-     (error) => {
-       
-      if (error.status === 404) {
-        this.submitMessage = 'Userid not found ! please give the correct login userId';
-      }
-      else
-      {
-        console.log(error);
-        this.submitMessage = error.message;
-      }
-    });
+      (error) => {
+
+        if (error.status === 404) {
+          this.submitMessage = 'Userid not found ! please give the correct login userId';
+        }
+        else {
+          console.log(error);
+          this.submitMessage = error.message;
+        }
+      });
   }
 
   ngOnInit() {
@@ -47,23 +44,22 @@ export class EditUserViewComponent implements OnInit {
 
   onSave() {
     this.userService.updateUser(this.user).subscribe(
-      (response) =>{ 
+      (response) => {
         console.log(response);
-    // this.authService.setUserName(this.user['name']);
-       this.routerService.routeToUser();
+        // this.authService.setUserName(this.user['name']);
+        this.routerService.routeToUser();
       },
       (error) => {
-       
+
         if (error.status === 404) {
           this.submitMessage = 'User not found ! please give the correct login userId';
         }
-        else
-        {
+        else {
           console.log(error);
           this.submitMessage = error.message;
         }
       });
-  
-}
+
+  }
 
 }

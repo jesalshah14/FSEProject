@@ -32,11 +32,12 @@ namespace ReminderService
             {
                 c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             });
-            //Implement token validation logic
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ReminderContext>();
             services.AddScoped<IReminderService, Service.ReminderService>();
             services.AddScoped<IReminderRepository, ReminderRepository>();
+            //Implement token validation logic
             ValidateToken(Configuration, services);
 
             //configuring swagger
@@ -77,6 +78,7 @@ namespace ReminderService
             {
                 app.UseDeveloperExceptionPage();
             }
+            //securing the api
             app.UseAuthentication();
             //adding swagger mw
             app.UseSwagger();

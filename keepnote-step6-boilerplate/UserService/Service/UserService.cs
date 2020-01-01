@@ -46,10 +46,7 @@ namespace UserService.Service
         //This method is used to register a new user
         public User RegisterUser(User user)
         {
-            ////if (user != null)
-            ////{
-            //return user;
-            ////}
+
             var userExists = repo.GetUserById(user.UserId);
             if (userExists == null)
             {

@@ -1,13 +1,11 @@
-
- 
-
-  <mat-form-field class="category-fields">
-    <input [(ngModel)]="category.name" [formControl]="name" matInput placeholder="name" type="text" required>
-  </mat-form-field><br>
-  <mat-form-field class="category-fields">
-    <textarea [(ngModel)]="category.description" [formControl]="description" matInput placeholder="description" required></textarea>
-  </mat-form-field><br>
-  <div>
-    <button class="category-fields"  mat-raised-button color="primary" (click)="onSave(category.id)">Save</button>
-  </div>
-  <label class="error-message">{{ errMessage }}</label>
+<mat-form-field class="category-fields">
+  <input [(ngModel)]="category.name" [formControl]="name" matInput placeholder="name" type="text" required>
+</mat-form-field><br>
+<mat-form-field class="category-fields">
+  <textarea [(ngModel)]="category.description" [formControl]="description" matInput placeholder="description"
+    required></textarea>
+</mat-form-field><br>
+<div>
+  <button class="category-fields" mat-raised-button color="primary" (click)="onSave(category.id)">Save</button>
+</div>
+<label class="error-message">{{ errMessage }}</label>

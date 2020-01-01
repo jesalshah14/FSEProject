@@ -1,7 +1,7 @@
 .noteInputcontainer{
     width :30vw;
     margin:auto;
-    margin-top:-10px;
+    margin-top:-35px;
 }
 
 .noteInputs{ 
@@ -16,6 +16,10 @@ justify-content: flex-end;
 
 .error-message{
     color: red;
+    font-style: italic;
+}
+.error-message1{
+    color: blueviolet;
     font-style: italic;
 }
 

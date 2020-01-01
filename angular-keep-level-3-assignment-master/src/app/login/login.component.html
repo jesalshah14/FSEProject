@@ -8,10 +8,10 @@
 
             <mat-form-field>
 
-                <input matInput class="username" name="username" placeholder="Enter UserName" 
-                [formControl]="username" required>
+                <input matInput class="username" name="username" placeholder="Enter UserName" [formControl]="username"
+                    required>
                 <mat-error *ngIf="username.invalid && (username.dirty || username.touched)"><i>username cannot be left
-                bllank</i></mat-error>
+                        bllank</i></mat-error>
 
             </mat-form-field>
 
@@ -28,7 +28,7 @@
 
 
             <div class="center-button">
-                <!-- <button mat-button class="button-css">Login</button> -->
+               
 
                 <button mat-raised-button color="primary" class="button-css" (click)='loginSubmit()'>Sign In</button>
 

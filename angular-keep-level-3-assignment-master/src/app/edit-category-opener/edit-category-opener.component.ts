@@ -17,10 +17,9 @@ export class EditCategoryOpenerComponent implements OnInit {
   category: Category;
   constructor(private activateRoute: ActivatedRoute, private categoryService: CategoryService,
     private routerService: RouterService, private matdialog: MatDialog) {
-
     this.activateRoute.params.subscribe(param => this.Id = param.categoryId);
     this.categoryService.getCategoryById(this.Id).subscribe(res => {
-    ///  debugger;
+      ///  debugger;
       this.category = res;
       this.matdialog.open(EditCategoryViewComponent, {
         data: this.category

@@ -10,5 +10,6 @@ export class DashboardComponent {
 
   constructor(private noteService: NotesService) {
       this.noteService.fetchNotesFromServer();
+     
   }
 }

@@ -16,22 +16,22 @@ export class AppComponent {
 
   ngOnInit() {
   }
-  routeToNoteView() {
-    this.isNoteView = true;
-    this.routeService.routeToNoteView();
-  }
+  // routeToNoteView() {
+  //   this.isNoteView = true;
+  //   this.routeService.routeToNoteView();
+  // }
 
-  routeToListView() {
-    this.isNoteView = false;
-    this.routeService.routeToListView();
-  }
+  // routeToListView() {
+  //   this.isNoteView = false;
+  //   this.routeService.routeToListView();
+  // }
 
-  routeToCategory() {
-    this.routeService.routeToCategory();
-  }
+  // routeToCategory() {
+  //   this.routeService.routeToCategory();
+  // }
 
-  routeToReminder() {
-    this.routeService.routeToReminder();
-  }
+  // routeToReminder() {
+  //   this.routeService.routeToReminder();
+  // }
 
 }

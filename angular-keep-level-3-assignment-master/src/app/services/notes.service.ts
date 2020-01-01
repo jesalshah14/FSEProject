@@ -65,13 +65,6 @@ export class NotesService {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
     })
-      .pipe(tap(edittedNote => {
-        const selectedNote = this.notes.find((currentNote) => currentNote.Id === edittedNote.Id);
-        // const data = this.notes.find(notes => notes.Id === editNote.Id);
-        Object.assign(selectedNote, edittedNote);
-        this.notesSubject.next(this.notes);
-      })
-      );
   }
 
 

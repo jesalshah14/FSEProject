@@ -48,12 +48,12 @@ export class HeaderSubComponent implements OnInit {
     localStorage.removeItem('bearerToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('UserName');
-  this.userID='';
+    this.userID='';
 
-  this.UserName ='';
+    this.UserName ='';
  
     this.routerService.routeToLogin();
-    window.location.reload(); 
+     window.location.reload(); 
   }
 
 

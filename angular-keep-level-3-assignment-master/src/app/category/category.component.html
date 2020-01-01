@@ -1,65 +1,65 @@
 <app-header-sub></app-header-sub>
 
 <div class="category-expansion-panel">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-              <h5>Category</h5>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div>
-                <!-- //(ngSubmit)="createCategory()" -->
-              <form action="" >
-                <mat-form-field class="matinput">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h5>Category</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <!-- //(ngSubmit)="createCategory()" -->
+        <form action="">
+          <mat-form-field class="matinput">
 
-                  <input matInput placeholder="name" name="name" [formControl]="name">
-                  <mat-error *ngIf="name.invalid && (name.touched || name.dirty)"><i>
-                      category name is Required</i></mat-error>
-                </mat-form-field>
-                <br>
-                <mat-form-field class="matinput">
-                  <textarea matInput placeholder="description" name="description" 
-                  [formControl]="description"></textarea>
-                  <mat-error *ngIf="description.invalid && (description.touched || description.dirty)">
-                      <i>category description is
-                    Required</i></mat-error>
-                </mat-form-field><br>
-                <button mat-raised-button color="primary" class="button-css"(click)=createCategory()>Save</button>
-              </form>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
+            <input matInput placeholder="name" name="name" [formControl]="name">
+            <mat-error *ngIf="name.invalid && (name.touched || name.dirty)"><i>
+                category name is Required</i></mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="matinput">
+            <textarea matInput placeholder="description" name="description" [formControl]="description"></textarea>
+            <mat-error *ngIf="description.invalid && (description.touched || description.dirty)">
+              <i>category description is
+                Required</i></mat-error>
+          </mat-form-field><br>
+          <button mat-raised-button color="primary" class="button-css" (click)=createCategory()>Save</button>
+        </form>
       </div>
-      <br/>
-      <div  *ngFor="let category of categoryArr">
-      <div class="category-box">
-      
-      
-      <div class="container">
-        <div class="row">
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<br />
+<div *ngFor="let category of categoryArr">
+  <div class="category-box">
+
+
+    <div class="container">
+      <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <mat-card class="cards-layout">
-       <div>
-             <mat-card-content ><!--(click)="routeToNotes(category.id)" -->
-              Category Name: {{category.name}}<br> Category Descriptiion: {{category.description}}
-            </mat-card-content>
-             
-            <button class="delete" mat-button (click)="deleteCategory(category.id)" title="Delete">
-              <mat-icon class="maticon">delete</mat-icon>
-            </button>
-            <button class="edit" mat-button (click)="updateCategory(category.id)" title="Edit">
-              <mat-icon class="maticon">edit</mat-icon>
-            </button>
-          </div>
+            <div>
+              <mat-card-content>
+                <!--(click)="routeToNotes(category.id)" -->
+                Category Name: {{category.name}}<br> Category Descriptiion: {{category.description}}
+              </mat-card-content>
+
+              <button class="delete" mat-button (click)="deleteCategory(category.id)" title="Delete">
+                <mat-icon class="maticon">delete</mat-icon>
+              </button>
+              <button class="edit" mat-button (click)="updateCategory(category.id)" title="Edit">
+                <mat-icon class="maticon">edit</mat-icon>
+              </button>
+            </div>
           </mat-card>
         </div>
       </div>
-      </div>
-      </div>
-      </div>
-      <router-outlet name="categoryEditOutlet"></router-outlet>
-      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<router-outlet name="categoryEditOutlet"></router-outlet>
+<router-outlet></router-outlet>
 
 
 <label class="error-message">{{ errMessage }}</label>

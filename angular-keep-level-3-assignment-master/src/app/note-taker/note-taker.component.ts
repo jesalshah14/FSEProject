@@ -15,16 +15,12 @@ import { CategoryService } from '../services/category.service';
 })
 export class NoteTakerComponent implements OnInit {
 
-  // note: Note = new Note();
-  // notes: Array<Note> = [];
-
-  
   errMessage: string;
+  errMessage1: string;
   note: Note;
   notes: Note[];
   categories: Category[];
   Reminders: Reminder[];
- // checkedReminders: Reminder[];
   noteTakerForm = this.formBuilder.group({
     title: [''],
     content: [''],
@@ -32,76 +28,61 @@ export class NoteTakerComponent implements OnInit {
     Reminders: ['']
   })
 
-  
 
-  constructor(private formBuilder: FormBuilder, private notesService: NotesService, 
+
+  constructor(private formBuilder: FormBuilder, private notesService: NotesService,
     private categoryService: CategoryService,
     private reminderService: ReminderService, private authService: AuthenticationService) {
-      this.errMessage ="";
-      this.note = new Note();
-      this.notes = [];
-      this.Reminders = [];
-     // this.checkedReminders = [];
-      this.categoryService.getAllCategoryByUserId();
-      this.categoryService.getAllCategories().subscribe(res=>{
-        this.categories = res;
-  //console.log(this.categories);
-      })
-      this.reminderService.getAllRemindersByUserId();
-      this.reminderService.getAllReminders().subscribe(res => {
-        this.Reminders = res;
-        
-      console.log('note taker reminder'+  this.Reminders);
-      })
+    this.errMessage = "";
+    this.errMessage1 = "";
+    this.note = new Note();
+    this.notes = [];
+    this.Reminders = [];
+    this.categoryService.getAllCategoryByUserId();
+    this.categoryService.getAllCategories().subscribe(res => {
+      this.categories = res;
+      //console.log(this.categories);
+    })
+    this.reminderService.getAllRemindersByUserId();
+    this.reminderService.getAllReminders().subscribe(res => {
+    this.Reminders = res;
+
+      console.log('note taker reminder' + this.Reminders);
+    })
+    if (this.categories.length == 0 || this.Reminders.length == 0) {
+      this.errMessage1 = "Note:to add new category/reminder,please add from menu";
     }
+  }
   ngOnInit() {
-    // this.noteService.getNotes().subscribe(
-    //   notes => { this.notes = notes; },
-    //   err => { this.errMessage = err.errMessage; }
-    // );
   }
 
-  
 
-  takeNotes(){
+
+  takeNotes() {
 
     this.note = this.noteTakerForm.value;
     this.note.Status = 'not-started'
-//console.log('before note add '+JSON.stringify(this.noteTakerForm.value));
-//console.log('before note add '+JSON.stringify(this.note));
-this.errMessage = '';
+    //console.log('before note add '+JSON.stringify(this.noteTakerForm.value));
+    //console.log('before note add '+JSON.stringify(this.note));
+    this.errMessage = '';
 
-
-    // if (!this.note.Reminders) {
-    //   this.note.Reminders = null;
-    // }
-
-    // if (!this.note.category) {
-    //   this.note.category = null;
-    // }
-    
-    if (this.note.content === null || this.note.title === null||
-      this.note.content === '' || this.note.title === '')
-      {
+    if (this.note.content === null || this.note.title === null ||
+      this.note.content === '' || this.note.title === '') {
       this.errMessage = 'Title & Content fields are mandatory !';
     }
     else {
       this.notesService.addNote(this.note).subscribe(addnote => {
-      this.notesService.fetchNotesFromServer();
-      
-        this.errMessage ="";
+        this.notesService.fetchNotesFromServer();
+
+        this.errMessage = "";
       },
-      
-      error => {
-       console.log('note POST error'+error.errMessage);
-        // const index = this.notes.findIndex(note => note.Title === this.note.Title);
-        // this.notes.splice(index, 1);
-        // this.errMessage = 'Http failure response for http://localhost:8086/api/note: 404 Not Found';
-      });
+
+        error => {
+          console.log('note POST error' + error.errMessage);
+        });
       //this.note = new Note();
     }
     this.noteTakerForm.reset();
-   /// this.checkedReminders = [];
 
   }
 }

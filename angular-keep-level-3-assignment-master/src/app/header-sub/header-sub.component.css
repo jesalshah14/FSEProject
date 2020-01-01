@@ -10,6 +10,7 @@
 
 .dropdown-item
 {
+
 	position: relative;
 	left: -40px;
 	top: -1px;
@@ -83,6 +84,8 @@
     left: 40px !important;
 }
 	.dropdown-item {
+		
+	background-color: #3f51b5;
     position: relative;
     left: -72px;
     top: -1px;
@@ -103,6 +106,8 @@
     left: 50px;
 }
 	.dropdown-item {
+		
+	background-color: #3f51b5;
     position: relative;
     left: -72px;
     top: -1px;
@@ -123,6 +128,8 @@
     left: 50px;
 }
 	.dropdown-item {
+		
+	background-color: #3f51b5;
     position: relative;
     left: -72px;
     top: -1px;
@@ -143,6 +150,8 @@
     left: 50px;
 }
 	.dropdown-item {
+		
+	background-color: #3f51b5;
     position: relative;
     left: -72px;
     top: -1px;
