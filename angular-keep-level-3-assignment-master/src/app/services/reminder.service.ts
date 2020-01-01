@@ -13,63 +13,63 @@ export class ReminderService {
   private reminderBehavior: BehaviorSubject<Array<Reminder>>;
 
   constructor(private httpClient: HttpClient, private authService: AuthenticationService,
-     private router: RouterService) {
-    this.reminders =  [];
+    private router: RouterService) {
+    this.reminders = [];
     this.reminderBehavior = new BehaviorSubject(this.reminders);
-   }
-   
-  createReminder(reminder: Reminder): Observable<Reminder>{
+  }
+
+  createReminder(reminder: Reminder): Observable<Reminder> {
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     reminder.CreatedBy = userId;
     return this.httpClient.post<Reminder>(`${this.url}`, reminder,
       { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) });
-   }   
-
-  deleteReminder(reminderId): any{
-    const bearerToken = this.authService.getBearerToken();
-    return this.httpClient.delete<any>(`${this.url}/${reminderId}`,
-    { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) });
   }
 
-  updateReminder(Id:Number,reminder: Reminder): Observable<Reminder>{
+  deleteReminder(reminderId): any {
+    const bearerToken = this.authService.getBearerToken();
+    return this.httpClient.delete<any>(`${this.url}/${reminderId}`,
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) });
+  }
 
-   // console.log('reminder data for update'+Id+JSON.stringify(reminder));
+  updateReminder(Id: Number, reminder: Reminder): Observable<Reminder> {
+
+    // console.log('reminder data for update'+Id+JSON.stringify(reminder));
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     reminder.CreatedBy = userId;
     return this.httpClient.put<Reminder>(`${this.url}/${Id}`, reminder,
       { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-      );
+    );
   }
 
-  getReminderById(reminderId): Observable<Reminder>{
+  getReminderById(reminderId): Observable<Reminder> {
 
     const bearerToken = this.authService.getBearerToken();
     return this.httpClient.get<Reminder>(`${this.url}/${reminderId}`,
-    { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-      );
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
+    );
   }
 
-  getAllRemindersByUserId(){
-   //debugger;
+  getAllRemindersByUserId() {
+
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
-   // console.log('get reminder by user id'+userId);
+    // console.log('get reminder by user id'+userId);
     return this.httpClient.get<Array<Reminder>>(`${this.url}/${userId}`,
-    { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-    ).subscribe(res => {
-    ///  debugger;
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) })
+      .subscribe(res => {
+
       this.reminders = res;
-    console.log('get reminder by user id'+userId+JSON.stringify(this.reminders));
+      console.log('get reminder by user id' + userId + JSON.stringify(this.reminders));
       this.reminderBehavior.next(this.reminders);
-     },error =>{
-       console.log();
-       this.router.routeToLogin();
-     });
+    }, error => {
+      console.log();
+      this.router.routeToLogin();
+    });
   }
 
-  getAllReminders(): BehaviorSubject<Array<Reminder>>{
+  getAllReminders(): BehaviorSubject<Array<Reminder>> {
     return this.reminderBehavior;
   }
 }

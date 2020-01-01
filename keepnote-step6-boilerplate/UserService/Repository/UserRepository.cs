@@ -42,6 +42,7 @@ namespace UserService.Repository
         {
             try
             {
+                user.AddedDate = DateTime.Now;
                 context.Users.InsertOne(user);
                 return user;
             }

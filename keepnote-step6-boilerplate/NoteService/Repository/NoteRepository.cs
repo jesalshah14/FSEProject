@@ -41,10 +41,12 @@ namespace NoteService.Repository
                     {
                     List<Note> NoteList = new List<Note>();
                     note.Id = id;
+                    note.CreationDate = DateTime.Now;
                     NoteList.Add(note);
 
                    
                   var noteuser = new NoteUser { UserId = note.CreatedBy, Notes = NoteList };
+                    
                     context.Notes.InsertOne(noteuser);
                     status = true;
                 }
@@ -53,6 +55,7 @@ namespace NoteService.Repository
 
                     var existingNotes = userExists.Notes;
                     note.Id = id;
+                    note.CreationDate = DateTime.Now;
                     existingNotes.Add(note);
                    
                     var filter = Builders<NoteUser>.Filter.Where(C => C.UserId == userExists.UserId);
@@ -74,8 +77,9 @@ namespace NoteService.Repository
         //This method should be used to retreive all notes for a user
         public List<Note> FindAllNotesByUser(string userId)
         {
+
             var noteuser = context.Notes.Find(N => N.UserId == userId).FirstOrDefault();
-         return noteuser != null ? noteuser.Notes.ToList() : null;
+            return noteuser != null ? noteuser.Notes.ToList() : null;
             ////return noteuser.Notes.ToList();
         }
 

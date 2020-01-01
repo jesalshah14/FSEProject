@@ -87,6 +87,7 @@ export class EditNoteViewComponent implements OnInit {
      this.noteService.editNote(Id,this.note).subscribe(res => {
    
    this.noteService.fetchNotesFromServer();
+   
      }, error => {
       if (error.status === 404) {
                 this.errMessage = error.message;

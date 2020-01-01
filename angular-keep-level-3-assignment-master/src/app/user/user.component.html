@@ -2,25 +2,23 @@
 <div>
   <h1>User Profile</h1>
   <mat-card>
-      <label>UserId:</label>
-      <mat-card-content> {{user?.userId}}</mat-card-content>
+    <label>UserId:</label>
+    <mat-card-content> {{user?.userId}}</mat-card-content>
     <label>Name:</label>
-      <mat-card-content> {{user?.name}}</mat-card-content>
-      <label>Contact No:</label>
-      <mat-card-content> {{user?.contact}}</mat-card-content>
-       <!-- <label>CreatedAt: </label>
+    <mat-card-content> {{user?.name}}</mat-card-content>
+    <label>Contact No:</label>
+    <mat-card-content> {{user?.contact}}</mat-card-content>
+    <!-- <label>CreatedAt: </label>
       <mat-card-content>{{user?.addedDate}}</mat-card-content> -->
 
-      <!-- <button class="delete" mat-button title="Remove">
+    <!-- <button class="delete" mat-button title="Remove">
           <mat-icon class="maticon" (click)="deleteUser()">delete</mat-icon>
         </button> -->
-        <button class="edit" mat-button (click)="updateUser()" title="Edit">
-            <mat-icon class="maticon">edit</mat-icon>
-          </button>
+    <button class="edit" mat-button (click)="updateUser()" title="Edit">
+      <mat-icon class="maticon">edit</mat-icon>
+    </button>
 
   </mat-card>
- 
-<i><label class="error-message">{{ submitMessage }}</label></i>
-  <!-- <button mat-raised-button color="primary" (click)="updateUser()" type="button" >Edit</button> -->
-</div> 
 
+  <i><label class="error-message">{{ submitMessage }}</label></i>
+</div>

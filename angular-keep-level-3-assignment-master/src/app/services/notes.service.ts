@@ -18,12 +18,11 @@ export class NotesService {
 
   constructor(private httpClient: HttpClient, private authService: AuthenticationService,
     private router: RouterService) {
- this.fetchNotesFromServer();
-
+    this.fetchNotesFromServer();
   }
 
   fetchNotesFromServer() {
-   const  bearerToken= this.authService.getBearerToken();
+    const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     this.httpClient.get<Array<Note>>(`${this.url}/${userId}`, {
       headers: new HttpHeaders()
@@ -32,15 +31,10 @@ export class NotesService {
       this.notes = data;
       this.notesSubject.next(this.notes);
     },
-      (err) => { 
-
+      (err) => {
         this.router.routeToLogin();
       });
   }
-
-
-
-
 
   getNotes(): BehaviorSubject<Array<Note>> {
     return this.notesSubject;
@@ -50,27 +44,23 @@ export class NotesService {
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     note.CreatedBy = userId;
-   // console.log('add note - service'+JSON.stringify(note));
+    // console.log('add note - service'+JSON.stringify(note));
     console.log("jes");
     return this.httpClient.post<Note>(`${this.url}/${userId}`, note, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
     })
-      // .pipe(tap(addedNote => {
-      //   this.notes.push(addedNote);
-      //   this.notesSubject.next(this.notes);
-      // })
-      // );
+    // .pipe(tap(addedNote => {
+    //   this.notes.push(addedNote);
+    //   this.notesSubject.next(this.notes);
+    // })
+    // );
   }
 
-
-
-
-
-  editNote(Id,note: Note): Observable<Note> {
+  editNote(Id, note: Note): Observable<Note> {
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
-//console.log('note id -'+Id + JSON.stringify(note));
+    //console.log('note id -'+Id + JSON.stringify(note));
     return this.httpClient.put<Note>(`${this.url}/${userId}/${Id}`, note, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${bearerToken}`)
@@ -93,8 +83,8 @@ export class NotesService {
     const bearerToken = this.authService.getBearerToken();
     const userId = this.authService.getUserId();
     return this.httpClient.get<Note>(`${this.url}/${userId}`,
-     { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-      );
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
+    );
   }
 
 

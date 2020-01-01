@@ -17,16 +17,16 @@ export class RouterService {
   }
 
   routeToSignUp() {
-    
+
     this.router.navigate(['signup']);
   }
 
-  routeToEditUserView(userId){
+  routeToEditUserView(userId) {
     console.log(userId);
-    this.router.navigate(['user/edit',userId]);
+    this.router.navigate(['user/edit', userId]);
   }
 
-  routeToUserDetails(){
+  routeToUserDetails() {
     this.router.navigate(['user']);
   }
 
@@ -34,7 +34,7 @@ export class RouterService {
     this.router.navigate(['user']);
   }
 
-routeToCategory() {
+  routeToCategory() {
     this.router.navigate(['category']);
   }
 
@@ -58,7 +58,7 @@ routeToCategory() {
     }]);
   }
 
-  
+
   routeToEditNoteView(noteId) {
     this.router.navigate([
       'dashboard', {
@@ -70,7 +70,7 @@ routeToCategory() {
   }
 
 
-  routeToAddReminderView(noteId){
+  routeToAddReminderView(noteId) {
     this.router.navigate(['dashboard', {
       outlets: {
         noteReminderOutlet: ['note', noteId, 'addreminder']

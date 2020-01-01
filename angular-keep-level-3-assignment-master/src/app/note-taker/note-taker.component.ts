@@ -104,16 +104,4 @@ this.errMessage = '';
    /// this.checkedReminders = [];
 
   }
-
-
-
-  // onChange(reminder, event) {
-  //   if (event.target.checked) {
-  //     this.checkedReminders.push(reminder);
-  //   }
-  //   else if (!event.target.checked) {
-  //     const index = this.checkedReminders.findIndex(rem => rem.Id === reminder.reminderId);
-  //     this.checkedReminders.splice(index, 1);
-  //   }
-  // }
 }

@@ -36,7 +36,6 @@ import { EditCategoryViewComponent } from './edit-category-view/edit-category-vi
 import { EditCategoryOpenerComponent } from './edit-category-opener/edit-category-opener.component';
 import { CategoryService } from './services/category.service';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
-//import { CanActivateRouteGuard } from './can-activate-route.guard';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReminderComponent } from './reminder/reminder.component';
 import { ReminderViewComponent } from './reminder-view/reminder-view.component';

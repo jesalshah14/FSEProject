@@ -11,47 +11,39 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class UserComponent implements OnInit {
 
-  user :  User;
+  user: User;
   private useid: string;
-  private submitMessage :string;
+  private submitMessage: string;
   constructor(private userService: UserService, private routerService: RouterService,
     private authService: AuthenticationService) {
-     
-     
-     }
+
+
+  }
 
   ngOnInit() {
     ///console.log("fff");
-    this.userService.getUserById(this.authService.getUserId()).subscribe(result => {
-    this.user = result;
+      this.userService.getUserById(this.authService.getUserId()).subscribe(result => {
+      this.user = result;
       ///console.log('user jes '+JSON.stringify(result));
-      console.log('user jes '+JSON.stringify(this.user));
+      console.log('user jes ' + JSON.stringify(this.user));
     },
-    (error) => {
+      (error) => {
 
-      if (error.status === 404) {
-        this.submitMessage = 'User not found ! please  login ';
-      }
-      else
-      {
-        console.log(error);
-       
-      }
-    });
+        if (error.status === 404) {
+          this.submitMessage = 'User not found ! please  login ';
+        }
+        else {
+          console.log(error);
+          this.submitMessage = error;
+
+        }
+      });
   }
-
-  // deleteUser() {
-  //   this.userService.deleteUser().subscribe(res => {
-  //     localStorage.removeItem("userId");
-  //     localStorage.removeItem("bearerToken");
-  //     this.routerService.routeToLogin();
-  //   })
-  // }
 
   updateUser() {
     this.useid = this.authService.getUserId();
-   this.routerService.routeToEditUserView(this.useid);
-   
+    this.routerService.routeToEditUserView(this.useid);
+
   }
 
 }

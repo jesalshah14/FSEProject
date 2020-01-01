@@ -10,16 +10,15 @@ export class CanActivateRouteGuard implements CanActivate {
 
     constructor(private authService: AuthenticationService,
         private userService: UserService,
-
         private routeService: RouterService) { }
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-            const bearerToken = this.authService.getBearerToken();
-            const userId = this.authService.getUserId();
-           
+        const bearerToken = this.authService.getBearerToken();
+        const userId = this.authService.getUserId();
+
         //return true;
 
         // this.userService.isuservalid(bearerToken).then(data => {
@@ -46,10 +45,10 @@ export class CanActivateRouteGuard implements CanActivate {
         // }
 
 
-        if(userId === null || bearerToken === null){
+        if (userId === null || bearerToken === null) {
             this.routeService.routeToLogin();
-          }
-        else{
+        }
+        else {
             return true;
         }
     }

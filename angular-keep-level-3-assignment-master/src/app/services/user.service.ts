@@ -16,13 +16,13 @@ export class UserService {
     private router: RouterService) { }
 
   createUser(user: User): Observable<User> {
-   // const bearerToken = this.authService.getBearerToken();
-   //console.log(this.url);
-  // console.log(JSON.stringify(user));
-   return this.httpClient.post<User>(`${this.url}`, user,
-    //  { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-      );
-     // console.log(this.url);
+    // const bearerToken = this.authService.getBearerToken();
+    //console.log(this.url);
+    // console.log(JSON.stringify(user));
+    return this.httpClient.post<User>(`${this.url}`, user,
+      //  { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
+    );
+    // console.log(this.url);
   }
 
   updateUser(user: User): Observable<User> {
@@ -40,21 +40,21 @@ export class UserService {
   }
 
   getUserById(userId): Observable<User> {
-  
+
     const bearerToken = this.authService.getBearerToken();
     return this.httpClient.get<User>(`${this.url}/${userId}`,
-     { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
-      );
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`) }
+    );
   }
 
-    //   isuservalid(token:string){
-    //     debugger;
-    //     // http://localhost:8084/api/User/null
-    //      let userId = this.authService.getUserId();
-    //     return this.httpClient.get(`http://localhost:8084/api/User/${userId}`,
-    //  { headers: new HttpHeaders().set('Authorization', `Bearer ${token}`) }
-    //   ).map(response=> response['ok']).toPromise();
-    //   }
+  //   isuservalid(token:string){
+  //     debugger;
+  //     // http://localhost:8084/api/User/null
+  //      let userId = this.authService.getUserId();
+  //     return this.httpClient.get(`http://localhost:8084/api/User/${userId}`,
+  //  { headers: new HttpHeaders().set('Authorization', `Bearer ${token}`) }
+  //   ).map(response=> response['ok']).toPromise();
+  //   }
 
 
 }

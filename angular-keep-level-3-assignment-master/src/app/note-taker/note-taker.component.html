@@ -33,16 +33,17 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field  class="noteInputsfields">
-                    <mat-select placeholder="Select Category" formControlName="category" name="category">
-                        <mat-option *ngFor="let category of categories" [value]="category">
+                    <mat-select placeholder="Select Category | Add New Category From Menu" formControlName="category" name="category">
+                        <mat-option *ngFor="let category of categories" [value]="category" >
                             {{category.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+               
                 <br>
                 <br>
                 <mat-form-field class="noteInputsfields">
-                    <mat-select placeholder="Select Reminder" formControlName="Reminders" name="Reminders">
+                    <mat-select placeholder="Select Reminder | Add New Reminder From Menu" formControlName="Reminders" name="Reminders">
                         <mat-option *ngFor="let reminder of Reminders" [value]="reminder">
                             {{reminder.name}}
                         </mat-option>

@@ -51,8 +51,9 @@ export class HeaderSubComponent implements OnInit {
   this.userID='';
 
   this.UserName ='';
- // window.location.reload(); 
+ 
     this.routerService.routeToLogin();
+    window.location.reload(); 
   }
 
 

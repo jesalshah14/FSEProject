@@ -17,7 +17,7 @@
 
 .logout {
 	cursor: pointer;
-	bottom: 36px;
+	bottom: 37px;
 	position: relative;
 	left: 37px;
 }
@@ -58,9 +58,9 @@
 
 	.logout {
     cursor: pointer;
-    bottom: 36px;
+    bottom: 37px;
     position: relative;
-    left: 70px;
+    left: 50px;
 }
 	.dropdown-item {
     position: relative;
@@ -78,7 +78,7 @@
 
 	.logout {
     cursor: pointer;
-    bottom: 36px;
+    bottom: 37px;
     position: relative;
     left: 40px !important;
 }
@@ -98,7 +98,7 @@
 
 	.logout {
     cursor: pointer;
-    bottom: 36px;
+    bottom: 37px;
     position: relative;
     left: 50px;
 }
@@ -118,7 +118,7 @@
 
 	.logout {
     cursor: pointer;
-    bottom: 36px;
+    bottom: 37px;
     position: relative;
     left: 50px;
 }
@@ -138,7 +138,7 @@
 
 	.logout {
     cursor: pointer;
-    bottom: 36px;
+    bottom: 37px;
     position: relative;
     left: 50px;
 }
