@@ -15,7 +15,7 @@ publish auth api:
         - 'dotnet publish keepnote-step6-boilerplate/AuthenticationService/AuthenticationService.csproj -c Release'
     artifacts:
         paths:
-            - /JesalRajendra.Shah/Final_Demo/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/AuthenticationService.dll
+            - /JesalRajendra.Shah/final_keepnote_assignment/keepnote-step6-boilerplate/AuthenticationService/bin/Release/netcoreapp2.2/publish/
         expire_in: 1 week
 
 publish category api:
