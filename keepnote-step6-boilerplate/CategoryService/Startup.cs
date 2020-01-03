@@ -21,19 +21,24 @@ namespace CategoryService
         }
 
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //register all dependecies here
 
 
-            //  services.AddCors();
-            services.AddCors(c =>
+            //Add cors origin resource
+            services.AddCors(options =>
             {
-                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+                options.AddPolicy("Origin",
+                builder =>
+                {
+                    builder.WithOrigins(this.Configuration.GetSection("Cors")["Angular"])
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
             });
-          
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<CategoryContext>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

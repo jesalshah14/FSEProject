@@ -102,19 +102,19 @@ namespace Repository.Test
             return category;
         }
 
-        private Reminder GetReminder()
+        private List<Reminder> GetReminder()
         {
-            //List<Reminder> reminders = new List<Reminder>();
+            List<Reminder> reminders = new List<Reminder>();
             Reminder reminder = new Reminder();
             reminder.Id = 301;
             reminder.Name = "Email-reminder";
-            reminder.Description = "sending-mails";
             reminder.Type = "email";
             reminder.CreatedBy = "Mukesh";
             reminder.CreationDate = new DateTime();
-            //reminders.Add(reminder);
-            return reminder;
+            reminders.Add(reminder);
+            return reminders;
         }
-       
+
+
     }
 }

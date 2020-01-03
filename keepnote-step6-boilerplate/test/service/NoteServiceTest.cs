@@ -120,9 +120,9 @@ namespace Service.Test
             category.CreationDate = new DateTime();
             return category;
         }
-
-        private Reminder GetReminder()
+        private List<Reminder> GetReminder()
         {
+            List<Reminder> reminders = new List<Reminder>();
             Reminder reminder = new Reminder();
             reminder.Id = 301;
             reminder.Name = "Email-reminder";
@@ -130,9 +130,10 @@ namespace Service.Test
             reminder.Type = "email";
             reminder.CreatedBy = "Mukesh";
             reminder.CreationDate = new DateTime();
-           //// reminders.Add(reminder);
-            return reminder;
+            reminders.Add(reminder);
+            return reminders;
         }
+
 
         private Note GetNote()
         {

@@ -26,3 +26,11 @@ justify-content: flex-end;
 .noteInputsfields{
     width:91%;
 }
+.reminderdd{
+    min-width: 250px !important;
+    pointer-events: auto;
+    font-size: 14px;
+    top: 162.125px!important;
+    left: 491.906px!important;
+}
+

@@ -65,8 +65,8 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Sachin", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Sample Note",
                 CreatedBy = "Sachin",
-                Reminders = new Reminder { Id = 201, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" },
-              Title = "Sample",
+                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
+                Title = "Sample",
                 CreationDate = DateTime.Now
             };
             HttpRequestMessage request = new HttpRequestMessage();
@@ -93,7 +93,7 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Mukesh", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Note-1",
                 CreatedBy = "Mukesh",
-                Reminders = new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" },
+                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
                 Title = "Sample",
                 CreationDate = DateTime.Now
             };
@@ -140,7 +140,7 @@ namespace Test.controller
                 Category = new Category { Id = 101, Name = "Sports", CreatedBy = "Mukesh", Description = "All about sports", CreationDate = DateTime.Now },
                 Content = "Note-1",
                 CreatedBy = "Mukesh",
-                Reminders =  new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email"  },
+                Reminders = new List<Reminder> { new Reminder { Id = 201, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } },
                 Title = "Sample",
                 CreationDate = DateTime.Now
             };

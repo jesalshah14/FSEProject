@@ -23,7 +23,7 @@ namespace Test.InfraSetup
                 new NoteUser{
                     UserId="Mukesh", Notes=new List<Note>{
                         new Note {Id=101, Category= new Category{Id=101, Name="Sports", CreatedBy="Mukesh", Description="All about sports", CreationDate=DateTime.Now },
-                        Content="Sample Note", CreatedBy="Mukesh", Reminders=new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } ,
+                         Content="Sample Note", CreatedBy="Mukesh", Reminders=new List<Reminder>{ new Reminder { Id = 201, Name = "Sports", CreatedBy = "Mukesh", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } } ,
                         Title="Sample", CreationDate=DateTime.Now}
                     }
                 },
@@ -31,7 +31,7 @@ namespace Test.InfraSetup
                 new NoteUser{
                     UserId="Sachin", Notes=new List<Note>{
                         new Note {Id=101, Category= new Category{Id=102, Name="Sports", CreatedBy="Sachin", Description="All about sports", CreationDate=DateTime.Now },
-                        Content="Sample Note", CreatedBy="Sachin", Reminders= new Reminder { Id = 202, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email"} ,
+                         Content="Sample Note", CreatedBy="Sachin", Reminders=new List<Reminder>{ new Reminder { Id = 202, Name = "Sports", CreatedBy = "Sachin", Description = "sports reminder", CreationDate = DateTime.Now, Type = "email" } } ,
                         Title="Sample", CreationDate=DateTime.Now}
                     }
                 }

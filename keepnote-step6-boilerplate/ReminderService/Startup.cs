@@ -27,12 +27,19 @@ namespace ReminderService
         {
             //register all dependencies here
 
-            //  services.AddCors();
-            services.AddCors(c =>
+            //Add cors origin resource
+            services.AddCors(options =>
             {
-                c.AddPolicy("Origin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+                options.AddPolicy("Origin",
+                builder =>
+                {
+                    builder.WithOrigins(this.Configuration.GetSection("Cors")["Angular"])
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
             });
-            
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ReminderContext>();
             services.AddScoped<IReminderService, Service.ReminderService>();

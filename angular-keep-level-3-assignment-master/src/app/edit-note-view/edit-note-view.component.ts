@@ -27,7 +27,7 @@ export class EditNoteViewComponent implements OnInit {
   checkedReminders = [];
   notes: Note[]
   addedReminders: Reminder[];
-
+ 
 
   // noteTakerForm = this.formBuilder.group({
   //   Title: [''],

@@ -10,7 +10,7 @@ export class Note {
   CreationDate: string;
   CreatedBy: string;
   category: Category;
-  Reminders: Reminder;
+  Reminders: Reminder[];
 
   constructor() {
     this.title = '';

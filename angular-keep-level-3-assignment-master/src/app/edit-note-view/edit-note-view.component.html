@@ -27,12 +27,23 @@
   </mat-form-field>
 
   <br>
-  <mat-form-field>
-    <mat-select [(ngModel)]="note.reminders" name="reminder" placeholder="Select reminder: {{note.reminders?.name}}">
-      <mat-option *ngFor="let reminder of reminders" [value]="reminder">
-        {{reminder?.name}}
-      </mat-option>
-    </mat-select>
+  <!-- <mat-form-field>
+      <mat-select [(ngModel)]="note.reminders" name="reminder" placeholder="Select reminder: {{note.reminders?.name}}">
+        <mat-option *ngFor="let reminder of reminders" [value]="reminder">
+          {{reminder?.name}}
+        </mat-option>
+      </mat-select> -->
+
+ 
+  <mat-form-field >
+    Select reminder:<label *ngFor="let rem of note.reminders; let isLast=last">
+      {{rem.name}} {{isLast ? '' : ', &nbsp;'}}</label>
+      <mat-select [(ngModel)]="note.reminders"  name="reminder"
+     multiple>
+          <mat-option *ngFor="let reminder of reminders" [value]="reminder">
+              {{reminder.name}}
+          </mat-option>
+      </mat-select>
   </mat-form-field>
 
 </div>

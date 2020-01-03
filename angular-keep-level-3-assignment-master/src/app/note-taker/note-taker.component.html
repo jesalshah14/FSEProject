@@ -26,11 +26,17 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <br>
 
-                    <br>
-                    <br>
+                    <!-- <mat-form-field class="noteInputsfields">
+                            <mat-select placeholder="Select Reminder" formControlName="Reminders" name="Reminders">
+                                <mat-option *ngFor="let reminder of Reminders" [value]="reminder">
+                                    {{reminder.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
                     <mat-form-field class="noteInputsfields">
-                        <mat-select placeholder="Select Reminder" formControlName="Reminders" name="Reminders">
+                        <mat-select placeholder="Select Reminder" formControlName="reminder" name="reminder" multiple>
                             <mat-option *ngFor="let reminder of Reminders" [value]="reminder">
                                 {{reminder.name}}
                             </mat-option>
