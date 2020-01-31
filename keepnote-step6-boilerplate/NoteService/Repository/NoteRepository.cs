@@ -78,7 +78,7 @@ namespace NoteService.Repository
         public List<Note> FindAllNotesByUser(string userId)
         {
 
-            var noteuser = context.Notes.Find(N => N.UserId == userId).FirstOrDefault();
+            var noteuser = context.Notes.Find(N => N.UserId == userId).ToList().FirstOrDefault();
             return noteuser != null ? noteuser.Notes.ToList() : null;
             ////return noteuser.Notes.ToList();
         }
